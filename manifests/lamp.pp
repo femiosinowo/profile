@@ -45,9 +45,15 @@ class profile::lamp (
   }
 
   firewall { '100 allow 80,3306,443':
-    dport  => [80, 3306, 443],
+    dport  => [80,443],
     proto  => tcp,
     action => accept,
   }
 
+  firewall { '100 allow 3306':
+    dport  => 3306,
+    proto  => tcp,
+    action => accept,
+  }
+  
 }
