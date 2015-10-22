@@ -3,7 +3,7 @@ class profile::base {
 	include motd
 	include stdlib
 	include resolver
-	include selinux
+	#include selinux
 	include vmwaretools
 
 resources { 'firewall':
