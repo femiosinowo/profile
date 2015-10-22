@@ -1,26 +1,32 @@
 class profile::base {
-	include ssh
-	include motd
-	include stdlib
-	include resolver
-	#include selinux
-	#include ::vmwaretools
+  include ssh
+  include motd
+  include stdlib
+  include resolver
 
-resources { 'firewall':
-  purge => true,
-}
+  # include selinux
+  # include ::vmwaretools
 
-#resources { 'firewallchain':
- # purge => true,
-#}
+  resources { 'firewall': purge => true, }
+
+  # resources { 'firewallchain':
+  # purge => true,
+  #}
 
 
-Firewall {
-  before  => Class['my_fw::post'],
-  require => Class['my_fw::pre'],
-}
+  Firewall {
+    before  => Class['my_fw::post'],
+    require => Class['my_fw::pre'],
+  }
 
-class { ['my_fw::pre', 'my_fw::post']: }
+  class { ['my_fw::pre', 'my_fw::post']:
+  }
+
+  firewall { '100 Allow SSH':
+    dport  => 22,
+    proto  => tcp,
+    action => accept,
+  }
 
 }
 
