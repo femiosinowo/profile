@@ -7,7 +7,8 @@ class profile::lamp (
   # class{'php': }
   include apache
   include apache::mod::php
-
+  include apache::mod::ssl
+  include apache::mod::alias
   # motd::register{ 'Apache': }
   # class apache {
   # include apache::install, apache::config, apache::service
