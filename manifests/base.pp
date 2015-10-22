@@ -4,7 +4,7 @@ class profile::base {
 	include stdlib
 	include resolver
 	#include selinux
-	include ::vmwaretools
+	#include ::vmwaretools
 
 resources { 'firewall':
   purge => true,
