@@ -52,7 +52,7 @@ class profile::lamp (
 
   firewall { '102 allow 3306':
     dport  => 3306,
-    proto  => all,
+    proto  => tcp,
     action => accept,
   }
   
