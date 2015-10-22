@@ -7,8 +7,22 @@ class profile::lamp (
   # class{'php': }
   include apache
   include apache::mod::php
-  include apache::mod::ssl
+
   include apache::mod::alias
+
+  class { 'apache::mod::ssl':
+    ssl_compression         => false,
+    ssl_cryptodevice        => 'builtin',
+    ssl_options             => ['StdEnvVars'],
+    ssl_openssl_conf_cmd    => undef,
+    ssl_cipher              => 'HIGH:MEDIUM:!aNULL:!MD5',
+    ssl_honorcipherorder    => 'On',
+    ssl_protocol            => ['all', '-SSLv2', '-SSLv3'],
+    ssl_pass_phrase_dialog  => 'builtin',
+    ssl_random_seed_bytes   => '512',
+    ssl_sessioncachetimeout => '300',
+  }
+
   # motd::register{ 'Apache': }
   # class apache {
   # include apache::install, apache::config, apache::service
