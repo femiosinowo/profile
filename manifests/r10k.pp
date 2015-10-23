@@ -16,7 +16,7 @@ class profile::r10k {
   #    }
   #    ,
   #  }
- class { 'webhook': }
+ #class { 'webhook': }
  
  
  
