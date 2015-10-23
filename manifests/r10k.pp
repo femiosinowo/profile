@@ -1,28 +1,28 @@
 class profile::r10k {
-#  class { 'r10k':
-#    sources => {
-#      'modules' => {
-#        'remote'  => 'ssh://git@github.com:femiosinowo/r10k.git',
-#        'basedir' => "${::settings::confdir}/environments",
-#        'prefix'  => true,
-#      }
-#      ,
-#      'hiera'   => {
-#        'remote'  => 'ssh://git@github.com:femiosinowo/hieradata.git',
-#        'basedir' => "${::settings::confdir}/environments",
-#        'prefix'  => true,
-#      }
-#      ,
-#    }
-#    ,
-#  }
+  #  class { 'r10k':
+  #    sources => {
+  #      'modules' => {
+  #        'remote'  => 'ssh://git@github.com:femiosinowo/r10k.git',
+  #        'basedir' => "${::settings::confdir}/environments",
+  #        'prefix'  => true,
+  #      }
+  #      ,
+  #      'hiera'   => {
+  #        'remote'  => 'ssh://git@github.com:femiosinowo/hieradata.git',
+  #        'basedir' => "${::settings::confdir}/environments",
+  #        'prefix'  => true,
+  #      }
+  #      ,
+  #    }
+  #    ,
+  #  }
 
   # Internal webhooks often don't need authentication and ssl
   # Change the url below if this is changed
-  class { 'r10k::webhook::config':
-    enable_ssl => false,
-    protected  => false,
-  }
+  #  class { 'r10k::webhook::config':
+  #    enable_ssl => false,
+  #    protected  => false,
+  #  }
 
   class { 'r10k::webhook':
     require => Class['r10k::webhook::config'],
