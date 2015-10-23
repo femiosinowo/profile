@@ -24,9 +24,9 @@ class profile::r10k {
   #    protected  => false,
   #  }
 
-  class { 'r10k::webhook':
-    require => Class['r10k::webhook::config'],
-  }
+#  class { 'r10k::webhook':
+#    require => Class['r10k::webhook::config'],
+#  }
 
   # https://github.com/abrader/abrader-gms
   # Add webhook to control repository ( the repo where the Puppetfile lives )
