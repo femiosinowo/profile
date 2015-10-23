@@ -7,5 +7,13 @@ class profile::jenkins_slave(
    		 ui_user => $jenkins_ui_user,
    		 ui_pass => $jenkins_ui_pass,
   }
+  
+  class { selinux: mode => 'disabled' }
+
+  firewall { '100 allow Jenkins on 8080':
+    dport  => 8080,
+    proto  => tcp,
+    action => accept,
+  }
 
 }
