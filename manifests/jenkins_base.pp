@@ -5,7 +5,7 @@ class profile::jenkins_base(
 
 	class { 'firewall': }
 	class {'jenkins':
-		configure_firewall	=> false,
+		configure_firewall	=> true,
 		}
 	#include jenkins
 	#jenkins::plugin { 'git': }
