@@ -8,7 +8,7 @@ class profile::mysql (
   class { '::mysql::server':
     root_password           => $db_password,
     remove_default_accounts => true,
-   override_options        => $override_options
+    override_options        => $override_options
   }
 
   mysql::db { $db_name:
@@ -16,6 +16,12 @@ class profile::mysql (
     password => $db_user_password,
     host     => $db_host,
     grant    => ['SELECT', 'UPDATE'],
+  }
+
+  firewall { '100 allow MySQL on 3306 & 3307':
+    dport  => [3306, 3307],
+    proto  => tcp,
+    action => accept,
   }
 
 }

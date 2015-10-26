@@ -5,14 +5,14 @@ class profile::base {
   include resolver
 
   # include selinux
-  # include ::vmwaretools
+    include ::vmwaretools
+#ntp module
+class { '::ntp':
+  servers => [ 'ntp1.corp.com', 'ntp2.corp.com' ],
+}
+
 
   resources { 'firewall': purge => true, }
-
-  # resources { 'firewallchain':
-  # purge => true,
-  #}
-
 
   Firewall {
     before  => Class['my_fw::post'],
