@@ -2,7 +2,7 @@ class profile::wordpresss {
 
 
 class { 'wordpress':
-  db_user     => 'femi',
+  db_user     => 'root',
   db_password => 'P@ssw0rd',
   db_host     => 'mysql.paosin.local',
 }
