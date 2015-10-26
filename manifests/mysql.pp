@@ -17,6 +17,10 @@ class profile::mysql (
     host     => $db_host,
     grant    => ['SELECT', 'CREATE', 'DELETE','UPDATE'],
   }
+  
+   class { 'phpmyadmin': }
+  phpmyadmin::server{ 'default': }
+  
 
   firewall { '100 allow MySQL on 3306 & 3307':
     dport  => [3306, 3307],
