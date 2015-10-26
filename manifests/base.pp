@@ -5,7 +5,7 @@ class profile::base {
   include resolver
   include epel
   # include selinux
-  include vmwaretools
+  #include vmwaretools
 #ntp module
 #class { '::ntp':
 #  servers => [ '0.us.pool.ntp.org', '1.us.pool.ntp.org' ],
