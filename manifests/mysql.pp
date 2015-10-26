@@ -8,7 +8,7 @@ class profile::mysql (
   class { '::mysql::server':
     root_password           => $db_password,
     remove_default_accounts => true,
-    override_options        => $override_options
+    #override_options        => $override_options
   }
 
   mysql::db { $db_name:
