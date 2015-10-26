@@ -11,7 +11,7 @@ class { 'wordpress1':
   class { selinux: mode => 'enabled' }
 
   firewall { '100 allow Port 80':
-    dport  => 80,
+    dport  => [80,443],
     proto  => tcp,
     action => accept,
   }
