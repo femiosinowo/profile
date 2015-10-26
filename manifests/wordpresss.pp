@@ -12,9 +12,12 @@ class profile::wordpresss {
   # # Configure wordpress
   class { '::wordpress':
     install_dir => '/var/www/html/paosin',
-    db_name     => 'paosin',
+    db_name     => 'paosin_db',
     db_host     => 'mysql.paosin.local',
+    db_user     => 'root',
     db_password => 'P@ssw0rd',
+    create_db   => true,
+    
   }
 
   # class { 'wordpress': }
