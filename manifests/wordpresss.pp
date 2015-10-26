@@ -1,6 +1,11 @@
 class profile::wordpresss {
 
 
+ 
+class { 'mysql::client':
+    bindings_enable => true,
+  }
+
 class { 'wordpress':
   db_user     => 'root',
   db_password => 'P@ssw0rd',
