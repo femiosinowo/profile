@@ -1,8 +1,15 @@
 class profile::wordpresss {
+  # # Configure apache
+  include apache
+  include apache::mod::php
+  include apache::mod::ssl
+
+  # # Configure mysql
   include '::mysql::server'
+
   class { '::mysql::client': bindings_enable => true, }
 
-  #class { 'mysql::bindings':}
+  # #Install wordpress
 
   class { 'wordpress':
     db_user     => 'femi',
