@@ -17,5 +17,5 @@ class { 'wordpress1':
   }
 
 
-
+ 
 }
