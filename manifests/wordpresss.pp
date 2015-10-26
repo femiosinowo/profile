@@ -1,7 +1,7 @@
 class profile::wordpresss {
-  #class { 'mysql::client': bindings_enable => true, }
+  class { '::mysql::client': bindings_enable => true, }
 
-  class { 'mysql::bindings':}
+  #class { 'mysql::bindings':}
 
   class { 'wordpress':
     db_user     => 'femi',
