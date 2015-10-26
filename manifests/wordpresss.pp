@@ -9,12 +9,12 @@ class profile::wordpresss {
 
   class { '::mysql::client': bindings_enable => true, }
 
-  # #Install wordpress
-
-  class { 'wordpress':
-    db_user     => 'femi',
-    db_password => 'P@ssw0rd',
+  # # Configure wordpress
+  class { '::wordpress':
+    install_dir => '/var/www/html/paosin',
+    db_name     => 'paosin',
     db_host     => 'mysql.paosin.local',
+    db_password => 'P@ssw0rd',
   }
 
   # class { 'wordpress': }
