@@ -15,7 +15,7 @@ class profile::mysql (
     user     => $db_user_name,
     password => $db_user_password,
     host     => $db_host,
-    grant    => ['SELECT', 'UPDATE'],
+    grant    => ['SELECT', 'CREATE', 'DELETE','UPDATE'],
   }
 
   firewall { '100 allow MySQL on 3306 & 3307':
