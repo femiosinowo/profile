@@ -3,11 +3,9 @@ class profile::lamp (
   $lamp_home      = hiera('lamp::lamp_home'),
   $lamp_group     = hiera('lamp::lamp_group'),
   $mysql_password = hiera('lamp::mysql_password')) {
-  # class{'apache':}
-  # class{'php': }
+
   include apache
   include apache::mod::php
-
   include apache::mod::alias
 
   class { 'apache::mod::ssl':
@@ -37,7 +35,7 @@ class profile::lamp (
     remove_default_accounts => true,
   }
 
-  user { 'lamp':
+  user { 'lamp': 
     ensure   => present,
     password => $lamp_password,
     home     => $lamp_home,
