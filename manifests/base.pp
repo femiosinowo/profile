@@ -7,9 +7,9 @@ class profile::base {
   # include selinux
     include ::vmwaretools
 #ntp module
-class { '::ntp':
-  servers => [ '0.us.pool.ntp.org', '1.us.pool.ntp.org' ],
-}
+#class { '::ntp':
+#  servers => [ '0.us.pool.ntp.org', '1.us.pool.ntp.org' ],
+#}
 
 
   resources { 'firewall': purge => true, }
