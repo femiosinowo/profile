@@ -8,7 +8,7 @@ class profile::base {
     include ::vmwaretools
 #ntp module
 class { '::ntp':
-  servers => [ 'ntp1.corp.com', 'ntp2.corp.com' ],
+  servers => [ '0.us.pool.ntp.org', '1.us.pool.ntp.org' ],
 }
 
 
