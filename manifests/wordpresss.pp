@@ -1,4 +1,5 @@
 class profile::wordpresss {
+  include '::mysql::server'
   class { '::mysql::client': bindings_enable => true, }
 
   #class { 'mysql::bindings':}
