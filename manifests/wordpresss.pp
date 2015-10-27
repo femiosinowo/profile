@@ -7,12 +7,12 @@ class profile::wordpresss {
   # # Configure mysql
   include '::mysql::server'
   
-mysql::db { 'paosin_db':
-  user     => 'femi',
-  password => 'P@ssw0rd',
-  host     => 'mysql.paosin.local',
-  grant    => ['ALL'],
-}
+#mysql::db { 'paosin_db':
+#  user     => 'femi',
+#  password => 'P@ssw0rd',
+#  host     => 'mysql.paosin.local',
+#  grant    => ['ALL'],
+#}
 
   class { '::mysql::client': bindings_enable => true, }
 
