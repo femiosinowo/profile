@@ -6,6 +6,8 @@ class profile::wordpresss {
 
   # # Configure mysql
   include '::mysql::server'
+  
+
 
   class { '::mysql::client': bindings_enable => true, }
 
@@ -14,7 +16,7 @@ class profile::wordpresss {
     install_dir => '/var/www/html/paosin',
     db_name     => 'paosin_db',
     db_host     => 'mysql.paosin.local',
-    db_user     => 'root',
+    db_user     => 'femi',
     db_password => 'P@ssw0rd',
     create_db   => true,
     
