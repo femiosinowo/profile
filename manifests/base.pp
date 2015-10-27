@@ -19,7 +19,7 @@ class profile::base {
   
   # common packages needed everywhere
     package {[
-            'vim',
+            'tree',
             'sudo',
             'screen'
         ]:
