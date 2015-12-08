@@ -15,6 +15,7 @@
     db_name     => 'paosin',
     db_host     => 'mysql.paosin.local',
     db_password => 'P@ssw0rd',
+    create_db
   }
 
   # class { 'wordpress': }
