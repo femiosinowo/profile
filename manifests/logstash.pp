@@ -9,7 +9,8 @@ class profile::logstash () {
     ensure       => present,
     java_install => true,
     before       => Exec['create_certs'],
-    #exec{'openssl req -x509 -days 3650 -batch -nodes -newkey rsa:2048 -keyout /etc/pki/tls/private/logstash-forwarder.key -out /etc/pki/tls/certs/logstash-forwarder.crt'}
+    package_url => 'https://download.elastic.co/logstash/logstash/packages/centos/logstash-2.1.1-1.noarch.rpm',
+     
   }
 
   exec { 'create_certs':
