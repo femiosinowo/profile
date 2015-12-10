@@ -9,6 +9,7 @@ class profile::logstash () {
     ensure       => 'present',
     java_install => true,
     before       => Exec['create_certs'],
+    
     # manage_repo  => true,
     # repo_version => '2.1',
     package_url  => 'https://download.elastic.co/logstash/logstash/packages/centos/logstash-2.1.1-1.noarch.rpm',
@@ -21,5 +22,7 @@ class profile::logstash () {
   }
 
   logstash::configfile { '/etc/logstash/conf.d/config.conf': content => template('profile/logstash/config.conf.erb'), }
+  
+
 
 }
