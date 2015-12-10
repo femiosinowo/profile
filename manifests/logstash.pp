@@ -6,7 +6,7 @@ class profile::logstash () {
   }
 
   class { '::logstash':
-    ensure       => absent,
+    ensure       => present,
     java_install => true,
     before       => Exec['create_certs'],
     # manage_repo  => true,
