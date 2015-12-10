@@ -6,12 +6,12 @@ class profile::logstash () {
   }
 
   class { '::logstash':
-    ensure       => present, 
+    ensure       => present,
     java_install => true,
     before       => Exec['create_certs'],
-    # manage_repo  => true,
-    # repo_version => '1.4',
-    package_url  => 'https://download.elastic.co/logstash/logstash/packages/centos/logstash-2.1.1-1.noarch.rpm',
+    manage_repo  => true,
+    repo_version => '2.1',
+  # package_url  => 'https://download.elastic.co/logstash/logstash/packages/centos/logstash-2.1.1-1.noarch.rpm',
   }
 
   exec { 'create_certs':
