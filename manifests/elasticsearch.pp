@@ -1,4 +1,6 @@
 class profile::elasticsearch () {
-  elasticsearch::instance { 'es-01': java_install => true }
+  class { 'elasticsearch': java_install => true }
+
+  ::elasticsearch::instance { 'es-01': }
 
 }
