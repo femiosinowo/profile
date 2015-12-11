@@ -1,6 +1,6 @@
 class profile::filebeat(){
   
-  class { '::filebeat':
+  class { 'filebeat':
   outputs => {
     'logstash'     => {
      'hosts' => [
