@@ -1,6 +1,4 @@
-class profile::nginx(){
-  
-  class { 'nginx': }
-  
-  
+class profile::nginx () {
+  class { '::nginx': }
+
 }
