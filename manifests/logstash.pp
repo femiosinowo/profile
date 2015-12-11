@@ -36,4 +36,4 @@ class profile::logstash () {
     proto  => tcp,
     action => accept,
   }
-
+}

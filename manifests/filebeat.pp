@@ -23,7 +23,6 @@ class profile::filebeat () {
   file { '/etc/pki/tls/certs/logstash-forwarder.crt':
     ensure => file,
     source => "puppet:///modules/profile/logstash/logstash-forwarder.crt",
-  # template('profile/logstash/logstash-forwarder.crt'),
   }
 
 }
