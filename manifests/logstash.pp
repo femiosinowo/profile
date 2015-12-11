@@ -1,9 +1,16 @@
 class profile::logstash () {
-  file { '/etc/pki/tls':
+  file { '/etc/pki/tls/certs/logstash-forwarder.crt':
+    ensure  => file,
+    source  => "puppet:///modules/profile/logstash/logstash-forwarder.crt",
+    alias   => 'cert_file',
+    require => File['cert_dir'],
+  }
+
+  file { '/etc/pki/tls/certs':
     ensure => directory,
     group  => root,
     alias  => 'cert_dir',
-    before => File['cert_dir'],
+    before => File['cert_file'],
   }
 
   class { '::logstash':
@@ -14,12 +21,6 @@ class profile::logstash () {
   # before       => Exec['create_certs'],
   #     manage_repo  => true,
   #    repo_version => 'latest',
-  }
-
-  file { '/etc/pki/tls/certs/logstash-forwarder.crt':
-    ensure => file,
-    source => "puppet:///modules/profile/logstash/logstash-forwarder.crt",
-    alias  => 'cert_file',
   }
 
   logstash::configfile { '/etc/logstash/conf.d/config.conf': content => template('profile/logstash/config.conf.erb'), }
