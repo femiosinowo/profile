@@ -10,8 +10,8 @@ class profile::filebeat () {
     }
     ,
     prospectors => {
-      log_type => 'syslog',
-      log_path => ['/var/log/*.log', '/var/log/syslog', '/var/log/auth.log'],
+      input_type => 'syslog',
+      paths => ['/var/log/*.log', '/var/log/syslog', '/var/log/auth.log'],
     }
     ,
   }
