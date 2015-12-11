@@ -11,7 +11,7 @@ class profile::logstash () {
     before       => Exec['create_certs'],
     
      manage_repo  => true,
-     repo_version => '1.2',
+     repo_version => '1.4',
     #package_url  => 'https://download.elastic.co/logstash/logstash/packages/centos/logstash-2.1.1-1.noarch.rpm',
   }
 
