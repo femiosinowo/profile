@@ -2,7 +2,8 @@ class profile::logstash () {
   file { '/etc/pki/tls':
     ensure => directory,
     group  => root,
-    alias  => 'cert_dir'
+    alias  => 'cert_dir',
+    before => File['cert_dir'],
   }
 
   class { '::logstash':
@@ -12,12 +13,20 @@ class profile::logstash () {
     #     manage_repo  => true,
     #    repo_version => 'latest',
     package_url  => 'https://download.elastic.co/logstash/logstash/packages/centos/logstash-2.1.1-1.noarch.rpm',
+    require      => File['cert_dir'],
   }
 
-  exec { 'create_certs':
-    require => File['cert_dir'],
-    path    => "/usr/bin:/usr/sbin:/bin",
-    command => 'openssl req -x509 -days 3650 -batch -nodes -newkey rsa:2048 -keyout /etc/pki/tls/private/logstash-forwarder.key -out /etc/pki/tls/certs/logstash-forwarder.crt',
+  #  exec { 'create_certs':
+  #    require => File['cert_dir'],
+  #    path    => "/usr/bin:/usr/sbin:/bin",
+  #    command => 'openssl req -x509 -days 3650 -batch -nodes -newkey rsa:2048 -keyout /etc/pki/tls/private/logstash-forwarder.key
+  #    -out /etc/pki/tls/certs/logstash-forwarder.crt',
+  #  }
+
+  file { '/etc/pki/tls/certs/logstash-forwarder.crt':
+    ensure => file,
+    source => "puppet:///modules/profile/logstash/logstash-forwarder.crt",
+    alias  => 'cert_file',
   }
 
   logstash::configfile { '/etc/logstash/conf.d/config.conf': content => template('profile/logstash/config.conf.erb'), }
@@ -28,4 +37,3 @@ class profile::logstash () {
     action => accept,
   }
 
-}
