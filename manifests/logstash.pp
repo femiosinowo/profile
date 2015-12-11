@@ -9,19 +9,12 @@ class profile::logstash () {
   class { '::logstash':
     ensure       => 'present',
     java_install => true,
-    before       => Exec['create_certs'],
-    #     manage_repo  => true,
-    #    repo_version => 'latest',
     package_url  => 'https://download.elastic.co/logstash/logstash/packages/centos/logstash-2.1.1-1.noarch.rpm',
     require      => File['cert_dir'],
+  # before       => Exec['create_certs'],
+  #     manage_repo  => true,
+  #    repo_version => 'latest',
   }
-
-  #  exec { 'create_certs':
-  #    require => File['cert_dir'],
-  #    path    => "/usr/bin:/usr/sbin:/bin",
-  #    command => 'openssl req -x509 -days 3650 -batch -nodes -newkey rsa:2048 -keyout /etc/pki/tls/private/logstash-forwarder.key
-  #    -out /etc/pki/tls/certs/logstash-forwarder.crt',
-  #  }
 
   file { '/etc/pki/tls/certs/logstash-forwarder.crt':
     ensure => file,
@@ -36,4 +29,11 @@ class profile::logstash () {
     proto  => tcp,
     action => accept,
   }
+
+  #  exec { 'create_certs':
+  #    require => File['cert_dir'],
+  #    path    => "/usr/bin:/usr/sbin:/bin",
+  #    command => 'openssl req -x509 -days 3650 -batch -nodes -newkey rsa:2048 -keyout /etc/pki/tls/private/logstash-forwarder.key
+  #    -out /etc/pki/tls/certs/logstash-forwarder.crt',
+  #  }
 }
