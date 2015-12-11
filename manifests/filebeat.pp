@@ -11,7 +11,7 @@ class profile::filebeat () {
     ,
     prospectors => {
       'logstash' => {
-        'paths'    => ['/var/log/*.log', '/var/log/syslog', '/var/log/auth.log'],
+        'paths'    => ['/var/log/*.log', '/var/log/syslog', '/var/log/auth.log' , '/var/log/secure'],
         'log_type' => 'syslog',
 
       }
