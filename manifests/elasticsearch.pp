@@ -8,7 +8,7 @@ class profile::elasticsearch () {
     autoupgrade  => true,
   }
 
-#  elasticsearch::instance { 'myinstance': }
+  elasticsearch::instance { 'myinstance': }
 #
 #  es_instance_conn_validator { 'myinstance':
 #    server => 'localhost',
@@ -17,5 +17,6 @@ class profile::elasticsearch () {
 
   #class { 'kibana4':
    # require => Es_Instance_Conn_Validator['myinstance'],
- # }
+ # 
+ }
 
