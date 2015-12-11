@@ -13,11 +13,17 @@ class profile::filebeat () {
       'logstash' => {
         'paths'    => ['/var/log/*.log', '/var/log/syslog', '/var/log/auth.log'],
         'log_type' => 'syslog',
-        # 'tls'
+
       }
       ,
     }
     ,
+  }
+
+  file { '/etc/pki/tls/certs/logstash-forwarder.crt':
+    ensure => file,
+    source => "puppet:///modules/profile/logstash/logstash-forwarder.crt",
+  # template('profile/logstash/logstash-forwarder.crt'),
   }
 
 }
