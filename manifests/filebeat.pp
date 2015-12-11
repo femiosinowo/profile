@@ -1,4 +1,9 @@
-class profile::filebeat ($log_path = ['/var/log/*.log', '/var/log/syslog', '/var/log/auth.log'], $log_type = 'syslog',) {
+class profile::filebeat (
+  $prospectors = {
+    log_type => 'syslog',
+    log_path => ['/var/log/*.log', '/var/log/syslog', '/var/log/auth.log'],
+  }
+) {
   class { '::filebeat':
     outputs => {
       'logstash' => {
@@ -12,3 +17,5 @@ class profile::filebeat ($log_path = ['/var/log/*.log', '/var/log/syslog', '/var
   }
 
 }
+
+#
