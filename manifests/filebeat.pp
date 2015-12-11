@@ -5,8 +5,18 @@ class profile::filebeat (
   }
 ) {
   class { '::filebeat':
-    outputs => {
+    outputs     => {
       'logstash' => {
+        'hosts'       => ['elk-stack:5044'],
+        'loadbalance' => true,
+        # 'tls'
+      }
+      ,
+    }
+    ,
+    prospectors => {
+      'log_type'    => 'syslog',
+      'log_path'    => {
         'hosts'       => ['elk-stack:5044'],
         'loadbalance' => true,
         # 'tls'
