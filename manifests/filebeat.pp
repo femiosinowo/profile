@@ -15,8 +15,7 @@ class profile::filebeat (
     }
     ,
     prospectors => {
-      'log_type'    => 'syslog',
-      'log_path'    => {
+      'log_path' => {
         'hosts'       => ['elk-stack:5044'],
         'loadbalance' => true,
         # 'tls'
