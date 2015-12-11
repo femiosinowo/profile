@@ -31,6 +31,10 @@ class profile::logstash () {
     action => accept,
   }
 
+  include profile::nginx
+
+  nginx::resource::upstream { 'kibana80': members => ['localhost:5601',], }
+
   #  exec { 'create_certs':
   #    require => File['cert_dir'],
   #    path    => "/usr/bin:/usr/sbin:/bin",
