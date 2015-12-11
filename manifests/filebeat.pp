@@ -1,6 +1,4 @@
-class profile::filebeat (
-  
-) {
+class profile::filebeat () {
   class { '::filebeat':
     outputs     => {
       'logstash' => {
@@ -12,12 +10,8 @@ class profile::filebeat (
     }
     ,
     prospectors => {
-      'log_path' => {
-        'hosts'       => ['elk-stack:5044'],
-        'loadbalance' => true,
-        # 'tls'
-      }
-      ,
+      log_type => 'syslog',
+      log_path => ['/var/log/*.log', '/var/log/syslog', '/var/log/auth.log'],
     }
     ,
   }
