@@ -32,8 +32,6 @@ class profile::logstash () {
   }
 
   include profile::nginx
-
-  # nginx::resource::upstream { 'kibana80': members => ['localhost:5601',] }
   nginx::resource::vhost { 'elkstack.paosin.local': proxy => 'http://localhost:5601', }
   #  exec { 'create_certs':
   #    require => File['cert_dir'],
