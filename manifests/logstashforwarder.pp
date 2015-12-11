@@ -1,4 +1,4 @@
-class profle::logstashforwarder () {
+class profile::logstashforwarder () {
   class { 'logstashforwarder':
     servers  => ['logstash.yourdomain.com'],
     ssl_key  => 'puppet:///path/to/your/ssl.key',
