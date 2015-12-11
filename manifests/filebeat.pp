@@ -1,19 +1,10 @@
-class profile::filebeat () {
+class profile::filebeat ($log_path = ['/var/log/*.log', '/var/log/syslog', '/var/log/auth.log'], $log_type = 'syslog',) {
   class { '::filebeat':
-    outputs  => {
+    outputs => {
       'logstash' => {
         'hosts'       => ['elk-stack:5044'],
         'loadbalance' => true,
         # 'tls'
-      }
-      ,
-    }
-    ,
-    filebeat => {
-      'prospectors' => {
-        'paths'         => ['/var/log/*.log', '/var/log/syslog', '/var/log/auth.log'],
-        'document_type' => ['syslog'],
-        'input_type'    => ['log'],
       }
       ,
     }
