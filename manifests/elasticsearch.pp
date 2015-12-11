@@ -8,7 +8,7 @@ class profile::elasticsearch () {
     #autoupgrade  => true,
   }
 
-  elasticsearch::instance { 'myinstance': }
+  #elasticsearch::instance { 'myinstance': }
 #
 #  es_instance_conn_validator { 'myinstance':
 #    server => 'localhost',
