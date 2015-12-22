@@ -1,5 +1,5 @@
-class profile::r10k {
- class { '::r10k':
+class profile::r10k_p {
+ class { 'r10k':
       sources => {
         'modules' => {
           'remote'  => 'git@github.com:femiosinowo/r10k.git',
@@ -15,6 +15,22 @@ class profile::r10k {
       }
      ,
     }
+    
+    
+    class {'r10k::webhook::config':
+    use_mcollective => false,
+    public_key_path  => '/etc/puppetlabs/mcollective/server_public.pem',  # Mandatory for FOSS
+    private_key_path => '/etc/puppetlabs/mcollective/server_private.pem', # Mandatory for FOSS
+  }
+
+  class {'r10k::webhook':
+    user    => 'root',
+    group   => '0',
+  }
+  Package['mcollective-common'] -> Class['r10k::webhook']
+  Class['r10k::webhook::config'] -> Class['r10k::webhook']
+  
+  
 
   # class { 'webhook': }
 
