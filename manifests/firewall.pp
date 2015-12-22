@@ -13,7 +13,7 @@ class profile::firewall (
   class { ['my_fw::pre', 'my_fw::post']:
   }
 
-  firewall { '100 Allow':
+  firewall { $firewall_desc:
     dport  => $firewall_ports,
     proto  => $firewall_proto,
     action => $firewall_action,
