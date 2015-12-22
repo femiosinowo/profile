@@ -9,7 +9,7 @@ class profile::r10k_p {
         'hiera'   => {
           'remote'  => 'git@github.com:femiosinowo/hieradata.git',
           'basedir' => "${::settings::confdir}/hieradata",
-          'prefix'  => false,
+          'prefix'  => false, 
         }
         ,
       }
