@@ -32,14 +32,14 @@ class {'r10k::webhook':
  
 # https://github.com/abrader/abrader-gms
 # Add webhook to control repository ( the repo where the Puppetfile lives )
-git_webhook { 'web_post_receive_webhook' :
-  ensure       => present,
-  webhook_url  => 'http://puppet:puppet@98.233.241.211:8088/payload',
-  #token        =>  hiera('github_api_token'),
-  project_name => 'femiosinowo/r10k',
-  server_url   => 'https://github.com/femiosinowo',
-  provider     => 'github',
-}
+#git_webhook { 'web_post_receive_webhook' :
+#  ensure       => present,
+#  webhook_url  => 'http://puppet:puppet@98.233.241.211:8088/payload',
+#  #token        =>  hiera('github_api_token'),
+#  project_name => 'femiosinowo/r10k',
+#  server_url   => 'https://github.com/femiosinowo',
+#  provider     => 'github',
+#}
 
 
 #  class { 'r10k::webhook::config':
