@@ -1,36 +1,33 @@
 class profile::r10k_p {
- class { 'r10k':
-      sources => {
-        'modules' => {
-          'remote'  => 'git@github.com:femiosinowo/r10k.git',
-          'basedir' => "${::settings::confdir}/environments",
-        }
-        ,
-        'hiera'   => {
-          'remote'  => 'git@github.com:femiosinowo/hieradata.git',
-          'basedir' => "${::settings::confdir}/hieradata",
-          'prefix'  => false, 
-        }
-        ,
+  class { 'r10k':
+    sources => {
+      'modules' => {
+        'remote'  => 'git@github.com:femiosinowo/r10k.git',
+        'basedir' => "${::settings::confdir}/environments",
       }
-     ,
+      ,
+      'hiera'   => {
+        'remote'  => 'git@github.com:femiosinowo/hieradata.git',
+        'basedir' => "${::settings::confdir}/hieradata",
+        'prefix'  => false,
+      }
+      ,
     }
-    
-    
-    class {'r10k::webhook::config':
-    use_mcollective => false,
-    public_key_path  => '/etc/puppetlabs/mcollective/server_public.pem',  # Mandatory for FOSS
+    ,
+  }
+
+  class { 'r10k::webhook::config':
+    use_mcollective  => false,
+    public_key_path  => '/etc/puppetlabs/mcollective/server_public.pem', # Mandatory for FOSS
     private_key_path => '/etc/puppetlabs/mcollective/server_private.pem', # Mandatory for FOSS
   }
 
-  class {'r10k::webhook':
-    user    => 'root',
-    group   => '0',
+  class { 'r10k::webhook':
+    user  => 'root',
+    group => '0',
   }
   Package['mcollective-common'] -> Class['r10k::webhook']
   Class['r10k::webhook::config'] -> Class['r10k::webhook']
-  
-  
 
   # class { 'webhook': }
 
@@ -59,5 +56,4 @@ class profile::r10k_p {
   #  disable_ssl_verify => true,
   #  provider           => 'github',
   #}
-
 }
