@@ -19,7 +19,7 @@ class profile::base {
   package { ['tree', 'sudo', 'screen']: ensure => present, }
 
   # file beat for log shipping
-  include profile::filebeat
+  #include profile::filebeat
 
 }
 

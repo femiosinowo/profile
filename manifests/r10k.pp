@@ -1,21 +1,21 @@
 class profile::r10k {
-#  class { 'r10k':
-#    sources => {
-#      'modules' => {
-#        'remote'  => 'git@github.com:femiosinowo/r10k.git',
-#        'basedir' => "${::settings::confdir}/environments",
-#        'prefix'  => false,
-#      }
-#      ,
-#      'hiera'   => {
-#        'remote'  => 'git@github.com:femiosinowo/hieradata.git',
-#        'basedir' => "${::settings::confdir}/environments/hieradata",
-#        'prefix'  => false,
-#      }
-#      ,
-#    }
-#    ,
-#  }
+ class { 'r10k':
+      sources => {
+        'modules' => {
+          'remote'  => 'git@github.com:femiosinowo/r10k.git',
+          'basedir' => "${::settings::confdir}/environments",
+        }
+        ,
+        'hiera'   => {
+          'remote'  => 'git@github.com:femiosinowo/hieradata.git',
+          'basedir' => "${::settings::confdir}/hieradata",
+          'prefix'  => false,
+        }
+        ,
+      }
+     ,
+    }
+
   # class { 'webhook': }
 
 
