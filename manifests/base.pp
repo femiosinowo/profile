@@ -13,7 +13,7 @@ class profile::base {
 
 
   # base firewall config
-  include profile::firewall
+  #include profile::firewall
 
   # common packages needed everywhere
   package { ['tree', 'sudo', 'screen']: ensure => present, }
