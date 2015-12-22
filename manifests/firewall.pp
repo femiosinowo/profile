@@ -1,8 +1,8 @@
 class profile::firewall (
-$firewall_ports  = hiera('firewall::ports'),
-){
-  
-  
+  $firewall_desc   = hiera('firewall::desc'),
+  $firewall_ports  = hiera('firewall::ports'),
+  $firewall_proto  = hiera('firewall::proto'),
+  $firewall_action = hiera('firewall::action'),) {
   resources { 'firewall': purge => true, }
 
   Firewall {
@@ -13,12 +13,10 @@ $firewall_ports  = hiera('firewall::ports'),
   class { ['my_fw::pre', 'my_fw::post']:
   }
 
-  firewall { '100 Allow SSH':
+  firewall { $firewall_desc:
     dport  => $firewall_ports,
-    proto  => tcp,
-    action => accept,
+    proto  => $firewall_proto,
+    action => $firewall_action,
   }
-  
-  
-  
+
 }
