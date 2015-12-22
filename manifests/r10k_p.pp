@@ -29,7 +29,7 @@ class {'r10k::webhook::config':
 class {'r10k::webhook':
   require => Class['r10k::webhook::config'],
 }
-class { 'webhook': }
+ 
 # https://github.com/abrader/abrader-gms
 # Add webhook to control repository ( the repo where the Puppetfile lives )
 git_webhook { 'web_post_receive_webhook' :
