@@ -37,8 +37,9 @@ class profile::r10k_p {
     webhook_url  => 'http://puppet:puppet@98.233.241.211:8088/payload',
     token        => hiera('github_api_token'),
     project_name => 'femiosinowo/r10k',
-    server_url   => 'https://github.com/femiosinowo',
+    server_url   => 'https://api.github.com',
     provider     => 'github',
+    disable_ssl_verify => true,
   }
 
   #  class { 'r10k::webhook::config':
