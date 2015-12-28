@@ -8,5 +8,7 @@ class profile::elasticsearch () {
   # autoupgrade  => true,
   }
 
+elasticsearch::instance { 'es-01': }
+
 }
 
