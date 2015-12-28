@@ -44,5 +44,8 @@ class profile::r10k_p {
     provider           => 'github',
     disable_ssl_verify => true,
   }
+  
+  
+  
 
 }
