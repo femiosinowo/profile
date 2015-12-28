@@ -8,7 +8,13 @@ class profile::elasticsearch () {
   # autoupgrade  => true,
   }
 
-elasticsearch::instance { 'es-01': }
+  elasticsearch::instance { 'es-01': }
+
+  firewall { '200 allow Jenkins on 8080':
+    dport  => 5044,
+    proto  => tcp,
+    action => accept,
+  }
 
 }
 
