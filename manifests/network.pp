@@ -1,4 +1,4 @@
-class profile::network () {
+class profile::network_p () {
   network::if::static { 'eth0':
     ensure    => 'up',
     ipaddress => hiera('network::ipaddress'),
