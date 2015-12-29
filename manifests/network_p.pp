@@ -8,5 +8,4 @@ class profile::network_p () {
   class { 'network::global':
     gateway => hiera('network::gateway_addr'),
   }
-
 }
