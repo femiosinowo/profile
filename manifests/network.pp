@@ -1,12 +1,12 @@
-class profile::network ($network::ipaddress, $network::gateway_addr, $network::netmask) {
+class profile::network () {
   network::if::static { 'eth0':
     ensure    => 'up',
-    ipaddress => $network::ipaddress,
+    ipaddress => hiera('network::ipaddress'),
   }
 
   class { 'network::global':
-    gateway => $network::gateway_addr,
-    netmask => $network::netmask,
+    gateway => hiera('network::gateway_addr'),
+    netmask => hiera('network::netmask'),
   }
 
 }
