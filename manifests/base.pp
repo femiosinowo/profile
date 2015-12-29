@@ -6,7 +6,8 @@ class profile::base () {
   include epel
 
   # include selinux
-  # include vmwaretools
+  include vmwaretools
+
   # ntp module
   # class { '::ntp':
   #  servers => [ '0.us.pool.ntp.org', '1.us.pool.ntp.org' ],
@@ -17,7 +18,7 @@ class profile::base () {
   # include profile::firewall
 
   # common packages needed everywhere
-  package { ['tree', 'sudo', 'screen']: ensure => present, }
+  package { ['tree', 'sudo', 'screen', 'vim']: ensure => present, }
 
   # file beat for log shipping
   # include profile::filebeat
@@ -25,8 +26,6 @@ class profile::base () {
   class { '::ntp':
     servers => ['0.pool.ntp.org', '2.centos.pool.ntp.org', '1.rhel.pool.ntp.org'],
   }
-
-
 
 }
 
