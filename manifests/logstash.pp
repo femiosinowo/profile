@@ -23,7 +23,7 @@ class profile::logstash () {
   #    repo_version => 'latest',
   }
 
-  logstash::configfile { '/etc/logstash/conf.d/config.conf': content => template('profile/logstash/config.conf.erb'), }
+  ::logstash::configfile { '/etc/logstash/conf.d/config.conf': content => template('profile/logstash/config.conf.erb'), }
 
   firewall { '100 allow Jenkins on 8080':
     dport  => [80, 5601, 5044, 443, 9200],
