@@ -1,9 +1,10 @@
-class profile::base {
+class profile::base ($network::gateway_addr ,  $network::netmask) {
   include ssh
   include motd
   include stdlib
   include resolver
   include epel
+
   # include selinux
   # include vmwaretools
   # ntp module
@@ -13,18 +14,22 @@ class profile::base {
 
 
   # base firewall config
-  #include profile::firewall
+  # include profile::firewall
 
   # common packages needed everywhere
   package { ['tree', 'sudo', 'screen']: ensure => present, }
 
   # file beat for log shipping
-  #include profile::filebeat
-  
+  # include profile::filebeat
+
   class { '::ntp':
-    servers => [ '0.pool.ntp.org', '2.centos.pool.ntp.org', '1.rhel.pool.ntp.org'],
+    servers => ['0.pool.ntp.org', '2.centos.pool.ntp.org', '1.rhel.pool.ntp.org'],
   }
-  
+
+  class { 'network::global':
+    gateway => $network::gateway_addr,
+    netmask   => $network::netmask,
+  }
 
 }
 
