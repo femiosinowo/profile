@@ -1,4 +1,4 @@
-class profile::base ($network::gateway_addr ,  $network::netmask) {
+class profile::base () {
   include ssh
   include motd
   include stdlib
@@ -26,10 +26,7 @@ class profile::base ($network::gateway_addr ,  $network::netmask) {
     servers => ['0.pool.ntp.org', '2.centos.pool.ntp.org', '1.rhel.pool.ntp.org'],
   }
 
-  class { 'network::global':
-    gateway => $network::gateway_addr,
-    netmask   => $network::netmask,
-  }
+
 
 }
 
