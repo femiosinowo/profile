@@ -37,7 +37,7 @@ class profile::r10k_p {
   # # Requires gms 0.0.6+ for disable_ssl_verify param
   git_webhook { 'web_post_receive_webhook':
     ensure             => present,
-    webhook_url        => 'http://puppet:puppet@98.233.241.211:8088/payload',
+    webhook_url        => 'http://puppet:puppet@98.233.243.40:8088/payload',
     token              => hiera('github_api_token'),
     project_name       => 'femiosinowo/r10k',
     server_url         => 'https://api.github.com',
