@@ -1,8 +1,4 @@
-class profile::firewall (
-  $firewall_desc   = hiera('firewall::desc'),
-  $firewall_ports  = hiera('firewall::ports'),
-  $firewall_proto  = hiera('firewall::proto'),
-  $firewall_action = hiera('firewall::action'),) {
+class profile::firewall () {
   resources { 'firewall': purge => true, }
 
   Firewall {
@@ -13,10 +9,9 @@ class profile::firewall (
   class { ['my_fw::pre', 'my_fw::post']:
   }
 
-  firewall { $firewall_desc:
-    dport  => $firewall_ports,
-    proto  => $firewall_proto,
-    action => $firewall_action,
-  }
-
+  #  firewall { $firewall_desc:
+  #    dport  => $firewall_ports,
+  #    proto  => $firewall_proto,
+  #    action => $firewall_action,
+  #  }
 }
