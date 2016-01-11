@@ -3,7 +3,7 @@ class profile::jenkins_master () {
 
   class { selinux: mode => 'disabled' }
 
-  firewall { '110 allow Jenkins on 8080':
+  firewall { '120 allow Jenkins on 8080':
     dport  => 8080,
     proto  => tcp,
     action => accept,
