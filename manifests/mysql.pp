@@ -8,22 +8,23 @@ class profile::mysql (
   class { '::mysql::server':
     root_password           => $db_password,
     remove_default_accounts => true,
-    #override_options        => $override_options
+  # override_options        => $override_options
   }
 
   mysql::db { $db_name:
     user     => $db_user_name,
     password => $db_user_password,
     host     => $db_host,
-    grant    => ['SELECT', 'CREATE', 'DELETE','UPDATE'],
+    grant    => ['SELECT', 'CREATE', 'DELETE', 'UPDATE'],
   }
-  
-   class { 'phpmyadmin': }
-  phpmyadmin::server{ 'default': }
-  
+
+  class { 'phpmyadmin':
+  }
+
+  phpmyadmin::server { 'default': }
 
   firewall { '100 allow MySQL on 3306 & 3307':
-    dport  => [3306, 3307, 80,443],
+    dport  => [3306, 3307, 80, 443],
     proto  => tcp,
     action => accept,
   }
