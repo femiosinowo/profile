@@ -3,7 +3,6 @@ class profile::jenkins_base(
 	$jenkins_password = hiera('jenkins::jenkins_password')
 ){
 
-	class { 'firewall': }
 	class {'jenkins':
 		configure_firewall	=> true,
 		}
