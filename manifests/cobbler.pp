@@ -18,7 +18,6 @@ class profile::cobbler(){
   pip        => 'present',
   dev        => 'present',
   virtualenv => 'present',
-  gunicorn   => 'present',
 }
   
   
