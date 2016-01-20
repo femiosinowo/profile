@@ -17,7 +17,7 @@ class profile::cobbler(){
   version    => 'system',
   pip        => 'present',
   dev        => 'present',
-  virtualenv => 'present',
+  virtualenv => 'present', 
 }
   
   
