@@ -10,4 +10,10 @@ class profile::jenkins_base(
 	#jenkins::plugin { 'git': }
 	#class{ 'tomcat': }
 
+
+jenkins::user { 'femi':
+  email    => 'femi@paosin.local',
+  password => 'asdf',
+}
+
 }
