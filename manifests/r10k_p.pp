@@ -17,7 +17,7 @@ class profile::r10k_p {
   }
 
   # Required unless you disable mcollective
-  include r10k::mcollective
+  #include r10k::mcollective
 
   # Internal webhooks often don't need authentication and ssl
   # Change the url below if this is changed
