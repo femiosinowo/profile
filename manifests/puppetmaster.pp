@@ -1,5 +1,5 @@
 class profile::puppetmaster {
-  class { selinux: mode => 'disabled' }
+  #class { selinux: mode => 'disabled' }
 
   firewall { '120 allow puppet stuff':
     dport  => [443, 61613, 8140, 8088],
