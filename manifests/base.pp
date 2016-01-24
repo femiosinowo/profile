@@ -18,7 +18,7 @@ class profile::base () {
   # include profile::firewall
 
   # common packages needed everywhere
-  package { ['tree', 'sudo', 'screen']: ensure => present, }
+  package { ['tree', 'sudo', 'screen','man','vim']: ensure => present, }
 
   # file beat for log shipping
   # include profile::filebeat
