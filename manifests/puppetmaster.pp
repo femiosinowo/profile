@@ -14,5 +14,16 @@ class profile::puppetmaster {
 
   Package {
     allow_virtual => false }
+    
+    class { 'hiera':
+  hierarchy => [
+    '%{environment}',
+    '%{clientcert}',
+    '%{osfamily}',
+    'defaults',
+    'common',
+    'global',
+  ],
+}
 
 }
