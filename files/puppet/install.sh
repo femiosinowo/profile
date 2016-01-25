@@ -11,3 +11,6 @@ service ntpd start
 
  chkconfig puppet on
  chkconfig ntpd on
+ 
+ #run puppet
+ puppet agent -t
