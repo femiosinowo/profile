@@ -8,7 +8,7 @@ class { 'apache::mod::ssl': }
   }
 
   firewall { '120 allow puppet stuff':
-    dport  => [80,443, 8140, 8088],
+    dport  => [80,443, 8140, 8088,3000],
     proto  => tcp,
     action => accept,
   }
