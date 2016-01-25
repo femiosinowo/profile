@@ -1,12 +1,20 @@
 class profile::haproxy-puppet () {
-  
-    firewall { '120 allow puppet stuff':
+  class { 'apache': }
+
+  file { '/var/www/html/install.sh':
+    ensure  => file,
+    content => "puppet:///modules/profile/puppet/install.sh",
+    mode    => 'u+x'
+  }
+
+  firewall { '120 allow puppet stuff':
     dport  => [443, 8140, 8088],
     proto  => tcp,
     action => accept,
   }
-  
-  class { 'haproxy': }
+
+  class { 'haproxy':
+  }
 
   haproxy::listen { 'puppet00':
     collect_exported => false,
