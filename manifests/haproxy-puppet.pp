@@ -3,7 +3,7 @@ class profile::haproxy-puppet () {
 
   file { '/var/www/html/install.sh':
     ensure  => file,
-    content => "puppet:///modules/profile/puppet/install.sh",
+    source => "puppet:///modules/profile/puppet/install.sh",
     mode    => 'u+x'
   }
 
