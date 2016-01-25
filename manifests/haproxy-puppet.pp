@@ -1,5 +1,5 @@
 class profile::haproxy-puppet () {
- 
+  class { 'apache': }
 class { 'apache::mod::ssl': }
   file { '/var/www/html/install.sh':
     ensure  => file,
