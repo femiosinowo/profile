@@ -14,7 +14,7 @@ class profile::puppetmaster {
   }
 
   firewall { '120 allow puppet stuff':
-    dport  => [443, 61613, 8140, 8088],
+    dport  => [80,443, 61613, 8140, 8088],
     proto  => tcp,
     action => accept,
   }
