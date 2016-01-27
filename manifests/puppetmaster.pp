@@ -1,5 +1,17 @@
 class profile::puppetmaster {
-  #class { selinux: mode => 'disabled' }
+  # class { selinux: mode => 'disabled' }
+
+  class { 'apache':
+  }
+
+  class { 'apache::mod::ssl':
+  }
+
+  file { '/var/www/html/install.sh':
+    ensure => file,
+    source => "puppet:///modules/profile/puppet/install.sh",
+    mode   => 'u+x'
+  }
 
   firewall { '120 allow puppet stuff':
     dport  => [443, 61613, 8140, 8088],
@@ -14,16 +26,15 @@ class profile::puppetmaster {
 
   Package {
     allow_virtual => false }
-    
-#    class { 'hiera':
-#  hierarchy => [
-#    '%{environment}',
-#    '%{clientcert}',
-#    '%{osfamily}',
-#    'defaults',
-#    'common',
-#    'global',
-#  ],
-#}
 
+  #    class { 'hiera':
+  #  hierarchy => [
+  #    '%{environment}',
+  #    '%{clientcert}',
+  #    '%{osfamily}',
+  #    'defaults',
+  #    'common',
+  #    'global',
+  #  ],
+  #}
 }

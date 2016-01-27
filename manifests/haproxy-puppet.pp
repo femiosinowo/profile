@@ -1,11 +1,5 @@
 class profile::haproxy-puppet () {
-  class { 'apache': }
-class { 'apache::mod::ssl': }
-  file { '/var/www/html/install.sh':
-    ensure  => file,
-    source => "puppet:///modules/profile/puppet/install.sh",
-    mode    => 'u+x'
-  }
+
 
   firewall { '120 allow puppet stuff':
     dport  => [80,443, 8140, 8088,3000],
