@@ -1,11 +1,8 @@
 class profile::puppetmaster {
   # class { selinux: mode => 'disabled' }
 
-  class { 'apache':
-  }
-
-  class { 'apache::mod::ssl':
-  }
+ # class { 'apache':
+  #}
 
   file { '/var/www/html/install.sh':
     ensure => file,
