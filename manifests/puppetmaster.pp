@@ -24,14 +24,7 @@ class profile::puppetmaster {
   Package {
     allow_virtual => false }
 
-class { '::mcollective':
-  broker_host       => $::fqdn,
-  broker_port       => '61614',
-  security_provider => 'psk',
-  security_secret   => 'P@S5w0rD',
-  use_node          => false,
-}
-include ::mcollective::node
+ 
 
   #    class { 'hiera':
   #  hierarchy => [
