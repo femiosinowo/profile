@@ -12,7 +12,13 @@ class profile::base () {
   # class { '::ntp':
   #  servers => [ '0.us.pool.ntp.org', '1.us.pool.ntp.org' ],
   #}
-  
+  class { 'mcollective':
+  stomp_host     => 'puppet1.paosin.local',
+  stomp_user     => 'mcollective',
+  stomp_password => 'P@ssw0rd',
+  client         => true,
+  client_group   => 'mco-users',
+}
 
 
   # base firewall config

@@ -24,7 +24,11 @@ class profile::puppetmaster {
   Package {
     allow_virtual => false }
 
- 
+ class { 'mcollective':
+  stomp_host     => $::fqdn,
+  stomp_user     => 'mcollective',
+  stomp_password => 'P@ssw0rd',
+}
 
   #    class { 'hiera':
   #  hierarchy => [
