@@ -24,24 +24,32 @@ class profile::puppetmaster ($brokerHost = hiera('mcollective::brokerhost')) {
   Package {
     allow_virtual => false }
 
-  # include mcollective::server
-  # include mcollective::middleware
-  class { 'activemq':
-  }
+  class { 'java': distribution => 'jre', } ->
+  class { 'epel': } ->
+  yumrepo { 'puppetlabs-deps':
+    descr    => 'Puppet Labs Dependencies El 6 - $basearch',
+    baseurl  => 'http://yum.puppetlabs.com/el/6/dependencies/$basearch',
+    gpgkey   => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs',
+    enabled  => 1,
+    gpgcheck => 1,
+  } ->
+  class { 'activemq': package_type => 'rpm', }
+
+  class { 'activemq::stomp': port => 61613, }
 
   class { '::mcollective':
     client           => true,
     middleware_hosts => $brokerHost,
   }
-  
-class { '::mcollective':
-  broker_host       => $brokerHost,
-  broker_port       => '61614',
-  security_provider => 'psk',
-  security_secret   => 'P@ssw0rd',
-  use_node          => false,
-}
-include ::mcollective::client
+
+  class { '::mcollective':
+    broker_host       => $brokerHost,
+    broker_port       => '61614',
+    security_provider => 'psk',
+    security_secret   => 'P@ssw0rd',
+    use_node          => false,
+  }
+  include ::mcollective::client
   #    class { 'hiera':
   #  hierarchy => [
   #    '%{environment}',
