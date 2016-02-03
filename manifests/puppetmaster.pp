@@ -30,10 +30,6 @@ class profile::puppetmaster ($brokerHost = hiera('mcollective::brokerhost')) {
   }
 
   class { '::mcollective':
-    middleware_hosts => $brokerHost,
-  }
-
-  class { '::mcollective':
     client           => true,
     middleware_hosts => $brokerHost,
   }
