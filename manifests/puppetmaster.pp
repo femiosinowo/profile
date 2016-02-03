@@ -21,7 +21,7 @@ class profile::puppetmaster ($brokerHost = hiera('mcollective::brokerhost')) {
   Package {
     allow_virtual => false }
 
-  include profile::activemq ->
+  include profile::activemq 
   class { '::mcollective':
     broker_host       => $brokerHost,
     broker_port       => '61614',
