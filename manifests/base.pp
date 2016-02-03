@@ -12,10 +12,15 @@ class profile::base ($brokerHost = hiera('mcollective::brokerhost') ) {
   # class { '::ntp':
   #  servers => [ '0.us.pool.ntp.org', '1.us.pool.ntp.org' ],
   #}
- class { '::mcollective':
-    middleware_hosts => $brokerHost,
-  }
-
+ 
+class { '::mcollective':
+  broker_host       =>  $brokerHost,
+  broker_port       => '61614',
+  security_provider => 'psk',
+  security_secret   => 'P@ssw0rd',
+  use_node          => false,
+}
+include ::mcollective::node
 
   # base firewall config
   # include profile::firewall
