@@ -22,14 +22,7 @@ class profile::puppetmaster ($brokerHost = hiera('mcollective::brokerhost')) {
     allow_virtual => false }
 
   include profile::activemq 
-  class { '::mcollective':
-    broker_host       => $brokerHost,
-    broker_port       => '61614',
-    security_provider => 'psk',
-    security_secret   => 'P@ssw0rd',
-    use_node          => false,
-  }
-  include ::mcollective::client
+ 
   #    class { 'hiera':
   #  hierarchy => [
   #    '%{environment}',
