@@ -1,6 +1,5 @@
 class profile::activemq () {
   class { 'java': distribution => 'jre', } ->
-  class { 'epel': } ->
   yumrepo { 'puppetlabs-deps':
     descr    => 'Puppet Labs Dependencies El 6 - $basearch',
     baseurl  => 'http://yum.puppetlabs.com/el/6/dependencies/$basearch',
