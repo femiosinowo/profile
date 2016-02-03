@@ -1,7 +1,7 @@
-class profile::puppetmaster {
+class profile::puppetmaster ($brokerHost = hiera('mcollective::brokerhost')) {
   # class { selinux: mode => 'disabled' }
 
- # class { 'apache':
+  # class { 'apache':
   #}
 
   file { '/var/www/html/install.sh':
@@ -11,7 +11,7 @@ class profile::puppetmaster {
   }
 
   firewall { '120 allow puppet stuff':
-    dport  => [80,443, 61613, 8140, 8088],
+    dport  => [80, 443, 61613, 8140, 8088],
     proto  => tcp,
     action => accept,
   }
@@ -24,18 +24,20 @@ class profile::puppetmaster {
   Package {
     allow_virtual => false }
 
-#include mcollective::server
-#include mcollective::middleware
-include activemq
-class { '::mcollective':
-    middleware_hosts => [ $::fqdn],
+  # include mcollective::server
+  # include mcollective::middleware
+  class { 'activemq':
   }
-  
-   class { '::mcollective':
-    client            => true,
-    middleware_hosts => [ $::fqdn ],
+
+  class { '::mcollective':
+    middleware_hosts => $brokerHost,
   }
-  
+
+  class { '::mcollective':
+    client           => true,
+    middleware_hosts => $brokerHost,
+  }
+
   #    class { 'hiera':
   #  hierarchy => [
   #    '%{environment}',
