@@ -24,9 +24,18 @@ class profile::puppetmaster {
   Package {
     allow_virtual => false }
 
-include mcollective::server
-include mcollective::middleware
-
+#include mcollective::server
+#include mcollective::middleware
+include activemq
+class { '::mcollective':
+    middleware_hosts => [ $::fqdn],
+  }
+  
+   class { '::mcollective':
+    client            => true,
+    middleware_hosts => [ $::fqdn ],
+  }
+  
   #    class { 'hiera':
   #  hierarchy => [
   #    '%{environment}',
