@@ -31,15 +31,7 @@ class profile::puppetmaster ($brokerHost = hiera('mcollective::brokerhost')) {
 #    use_node          => false,
 #  }
 #  include ::mcollective::client
-  
-  class { 'mcollective':
-  stomp_host     =>$brokerHost,
-  stomp_user     => 'mcollective',
-  stomp_password => 'P@ssw0rd',
-  client         => true,
-  client_group   => 'mco-users',
-}
-
+ 
 
   #    class { 'hiera':
   #  hierarchy => [

@@ -22,14 +22,7 @@ class profile::base ($brokerHost = hiera('mcollective::brokerhost') ) {
 #}
 #include ::mcollective::node
 
-class { 'mcollective':
-  stomp_host     =>$brokerHost,
-  stomp_user     => 'mcollective',
-  stomp_password => 'P@ssw0rd',
-  client         => false,
-  client_group   => 'mco-users',
-}
-
+ 
   # base firewall config
   # include profile::firewall
 
