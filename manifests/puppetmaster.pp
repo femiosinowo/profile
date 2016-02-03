@@ -24,11 +24,8 @@ class profile::puppetmaster {
   Package {
     allow_virtual => false }
 
- class { 'mcollective':
-  stomp_host     => 'puppet1.paosin.local',
-  stomp_user     => 'mcollective',
-  stomp_password => 'P@ssw0rd',
-}
+include mcollective::server
+include mcollective::middleware
 
   #    class { 'hiera':
   #  hierarchy => [
