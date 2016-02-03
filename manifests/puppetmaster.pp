@@ -1,9 +1,6 @@
 class profile::puppetmaster ($brokerHost = hiera('mcollective::brokerhost')) {
   # class { selinux: mode => 'disabled' }
 
-  # class { 'apache':
-  #}
-
   file { '/var/www/html/install.sh':
     ensure => file,
     source => "puppet:///modules/profile/puppet/install.sh",
@@ -24,12 +21,7 @@ class profile::puppetmaster ($brokerHost = hiera('mcollective::brokerhost')) {
   Package {
     allow_virtual => false }
 
-include profile::activemq
-
-  class { '::mcollective':
-    client           => true,
-    middleware_hosts => $brokerHost,
-  }
+  include profile::activemq
 
   class { '::mcollective':
     broker_host       => $brokerHost,
