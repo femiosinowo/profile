@@ -11,4 +11,11 @@ class profile::activemq () {
   class { '::activemq': package_type => 'rpm', }
 
   class { '::activemq::stomp': port => 61613, }
+  
+    firewall { '120 allow puppet stuff':
+    dport  => [61613,61614, 8160],
+    proto  => tcp,
+    action => accept,
+  }
+  
 }
