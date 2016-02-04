@@ -8,24 +8,6 @@ class profile::base ($brokerHost = hiera('mcollective::brokerhost') ) {
   # include selinux
   include vmwaretools
 
-  # ntp module
-  # class { '::ntp':
-  #  servers => [ '0.us.pool.ntp.org', '1.us.pool.ntp.org' ],
-  #}
- 
-#class { '::mcollective':
-#  broker_host       =>  $brokerHost,
-#  broker_port       => '61614',
-#  security_provider => 'psk',
-#  security_secret   => 'P@ssw0rd',
-#  use_node          => false,
-#}
-#include ::mcollective::node
-
- 
-  # base firewall config
-  # include profile::firewall
-
   # common packages needed everywhere
   package { ['tree', 'sudo', 'screen','man']: ensure => present, }
 
