@@ -14,6 +14,6 @@ service puppet start
 
  chkconfig puppet on
 
- 
+ yum update -y
  #run puppet
  puppet agent -t
