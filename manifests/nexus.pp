@@ -9,4 +9,10 @@ class profile::nexus () {
 
   Class['::java'] ->
   Class['::nexus']
+  
+    firewall { '120 allow puppet stuff':
+    dport  => [8081],
+    proto  => tcp,
+    action => accept,
+  }
 }
