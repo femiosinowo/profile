@@ -6,7 +6,7 @@ class profile::base ($brokerHost = hiera('mcollective::brokerhost') ) {
   include epel
 
   # include selinux
-  include vmwaretools
+  #include vmwaretools
 
   # common packages needed everywhere
   package { ['tree', 'sudo', 'screen','man']: ensure => present, }
