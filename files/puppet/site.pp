@@ -12,6 +12,8 @@ hiera_include('classes')
 }
 node 'puppet1.paosin.local'{
 include role::puppetmaster
+# Every node installs the server
+include mcollective::server
 include mcollective::client
 
 }
