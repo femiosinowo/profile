@@ -24,10 +24,17 @@ node 'puppet1.paosin.local' {
   # Every node installs the server
   include mcollective::server
   include mcollective::client
-  include mcollective::facts
+ 
 
   mcollective::plugin::agent { 'puppet': version => latest, }
 
   mcollective::plugin::client { 'puppet': version => latest, }
 
+  file{"/etc/mcollective/facts.yaml":
+      owner    => root,
+      group    => root,
+      mode     => 400,
+      loglevel => debug, # reduce noise in Puppet reports
+      content  => inline_template("<%= scope.to_hash.reject { |k,v| k.to_s =~ /(uptime_seconds|timestamp|free)/ }.to_yaml %>"), # exclude rapidly changing facts
+    }
 }
