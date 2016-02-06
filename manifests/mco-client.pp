@@ -1,7 +1,8 @@
 class profile::mco-client () {
   mcollective::plugin::client { 'package': }
 
-  #mcollective::plugin::client { 'service': }
-
-  mcollective::plugin::client { 'puppet': }
+  mcollective::plugin::agent { 'puppet':
+    version      => latest,
+    dependencies => [Package[$puppet::client::package_name]],
+  }
 }
