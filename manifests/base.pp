@@ -1,4 +1,4 @@
-class profile::base ($brokerHost = hiera('mcollective::brokerhost') ) {
+class profile::base ($brokerHost = hiera('mcollective::brokerhost')) {
   include ssh
   include motd
   include stdlib
@@ -6,10 +6,10 @@ class profile::base ($brokerHost = hiera('mcollective::brokerhost') ) {
   include epel
 
   # include selinux
-  #include vmwaretools
+  # include vmwaretools
 
   # common packages needed everywhere
-  package { ['tree', 'sudo', 'screen','man']: ensure => present, }
+  package { ['tree', 'sudo', 'screen', 'man']: ensure => present, }
 
   # file beat for log shipping
   # include profile::filebeat
@@ -23,14 +23,20 @@ class profile::base ($brokerHost = hiera('mcollective::brokerhost') ) {
     proto  => tcp,
     action => accept,
   }
-  
-  file{"/etc/mcollective/facts.yaml":
-      owner    => root,
-      group    => root,
-      mode     => 400,
-      loglevel => debug, # reduce noise in Puppet reports
-      content  => inline_template("<%= scope.to_hash.reject { |k,v| k.to_s =~ /(uptime_seconds|timestamp|free)/ }.to_yaml %>"), # exclude rapidly changing facts
-    }
+
+  file { "/etc/mcollective/facts.yaml":
+    owner    => root,
+    group    => root,
+    mode     => 400,
+    loglevel => debug, # reduce noise in Puppet reports
+    content  => inline_template("<%= scope.to_hash.reject { |k,v| k.to_s =~ /(uptime_seconds|timestamp|free)/ }.to_yaml %>"), 
+  # exclude
+  # rapidly
+  # changing
+  # facts
+  }
+
+  mcollective::plugin::agent { 'puppet': version => latest, }
 
 }
 
