@@ -26,32 +26,9 @@ class profile::puppetmaster ($brokerHost = hiera('mcollective::brokerhost')) {
   Package {
     allow_virtual => false, }
 
-  #  class { '::mcollective':
-  #    broker_host       => $brokerHost,
-  #    broker_port       => '61614',
-  #    security_provider => 'psk',
-  #    security_secret   => 'P@ssw0rd',
-  #    use_node          => false,
-  #  }
-  #  include ::mcollective::client
+  class { 'hiera':
+    hierarchy => ['%{environment}/%{calling_class}', '%{environment}', '%{clientcert}', '%{osfamily}', '%{fqdn}', 'common',],
+    datadir   => '"/etc/puppet/hieradata/%{environment}"',
+  }
 
-  #  class { 'mcollective':
-  #  stomp_host     =>$brokerHost,
-  #  stomp_user     => 'mcollective',
-  #  stomp_password => 'P@ssw0rdP@ssw0rd',
-  #  client         => true,
-  #  client_group   => 'mco-users',
-  #}
-
-
-  #    class { 'hiera':
-  #  hierarchy => [
-  #    '%{environment}',
-  #    '%{clientcert}',
-  #    '%{osfamily}',
-  #    'defaults',
-  #    'common',
-  #    'global',
-  #  ],
-  #}
 }
