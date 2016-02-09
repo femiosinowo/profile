@@ -44,7 +44,7 @@ class profile::base ($brokerHost = hiera('mcollective::brokerhost')) {
 
   mcollective::plugin::agent { 'service': }
 
-  mcollective::plugin::agent { 'puppet': }
+  #mcollective::plugin::agent { 'puppet': }
 
 }
 
