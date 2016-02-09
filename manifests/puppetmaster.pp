@@ -23,13 +23,13 @@ class { 'hiera':
   
   mcollective::plugin::client { 'filemgr': }
 
-  mcollective::plugin::client { 'nettest': }
+  #mcollective::plugin::client { 'nettest': }
 
   mcollective::plugin::client { 'package': }
 
   mcollective::plugin::client { 'service': }
 
-  #mcollective::plugin::client { 'puppet': }
+  mcollective::plugin::client { 'puppet': }
   
   firewall { '120 allow puppet stuff':
     dport  => [80, 443, 61613, 61614, 8140, 8088],
