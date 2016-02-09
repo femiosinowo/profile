@@ -25,9 +25,9 @@ class { 'hiera':
 
   #mcollective::plugin::client { 'nettest': }
 
-  mcollective::plugin::client { 'package': }
+  #mcollective::plugin::client { 'package': }
 
-  mcollective::plugin::client { 'service': }
+  #mcollective::plugin::client { 'service': }
 
   mcollective::plugin::client { 'puppet': }
   
