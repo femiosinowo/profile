@@ -1,6 +1,6 @@
 class profile::puppetmaster ($brokerHost = hiera('mcollective::brokerhost')) {
   # class { selinux: mode => 'disabled' }
-class { 'hiera':
+  class { 'hiera':
     hierarchy => ['%{environment}/%{calling_class}', '%{environment}', '%{clientcert}', '%{osfamily}', '%{fqdn}', 'common',],
     datadir   => '"/etc/puppet/hieradata/%{environment}"',
   }
@@ -20,23 +20,22 @@ class { 'hiera':
     ensure => file,
     source => "puppet:///modules/profile/puppet/autosign.conf",
   }
-  
-  #mcollective::plugin::client { 'filemgr': }
+  include mcollective::client
 
-  #mcollective::plugin::client { 'nettest': }
+  mcollective::plugin::client { 'filemgr': }
 
-  #mcollective::plugin::client { 'package': }
+  mcollective::plugin::client { 'nettest': }
 
-  #mcollective::plugin::client { 'service': }
+  mcollective::plugin::client { 'package': }
 
-  #mcollective::plugin::client { 'puppet': }
-  
+  mcollective::plugin::client { 'service': }
+
+  mcollective::plugin::client { 'puppet': }
+
   firewall { '120 allow puppet stuff':
     dport  => [80, 443, 61613, 61614, 8140, 8088],
     proto  => tcp,
     action => accept,
   }
-
- 
 
 }
