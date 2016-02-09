@@ -7,18 +7,18 @@ class { 'hiera':
 
   file { '/var/www/html/install.sh':
     ensure => file,
-    source => "puppet:///modules/profiles/puppet/install.sh",
+    source => "puppet:///modules/profile/puppet/install.sh",
     mode   => 'u+x'
   }
 
   file { '/etc/puppet/environments/production/manifests/site.pp':
     ensure => file,
-    source => "puppet:///modules/profiles/puppet/site.pp",
+    source => "puppet:///modules/profile/puppet/site.pp",
   }
 
   file { '/etc/puppet/autosign.conf':
     ensure => file,
-    source => "puppet:///modules/profiles/puppet/autosign.conf",
+    source => "puppet:///modules/profile/puppet/autosign.conf",
   }
   
   #mcollective::plugin::client { 'filemgr': }
