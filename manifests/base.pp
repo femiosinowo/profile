@@ -36,7 +36,7 @@ class profile::base ($brokerHost = hiera('mcollective::brokerhost')) {
   # facts
   }
 
-  include mcollective::agent
+  include mcollective::server
 
   mcollective::plugin::agent { 'filemgr': }
 
