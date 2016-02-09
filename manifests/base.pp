@@ -29,7 +29,7 @@ class profile::base ($brokerHost = hiera('mcollective::brokerhost')) {
     group    => root,
     mode     => 400,
     loglevel => debug, # reduce noise in Puppet reports
-    content  => inline_template("<%= scope.to_hash.reject { |k,v| k.to_s =~ /(uptime_seconds|timestamp|free)/ }.to_yaml %>"), 
+    content  => inline_template("<%= scope.to_hash.reject { |k,v| k.to_s =~ /(uptime_seconds|timestamp|free)/ }.to_yaml %>"),
   # exclude
   # rapidly
   # changing
@@ -37,6 +37,7 @@ class profile::base ($brokerHost = hiera('mcollective::brokerhost')) {
   }
 
   include mcollective::agent
+
   mcollective::plugin::agent { 'filemgr': }
 
   mcollective::plugin::agent { 'nettest': }
