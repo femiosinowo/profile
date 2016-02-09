@@ -36,13 +36,13 @@ class profile::base ($brokerHost = hiera('mcollective::brokerhost')) {
   # facts
   }
 
-  mcollective::plugin::agent { 'filemgr': }
+  #mcollective::plugin::agent { 'filemgr': }
 
-  mcollective::plugin::agent { 'nettest': }
+  #mcollective::plugin::agent { 'nettest': }
 
-  mcollective::plugin::agent { 'package': }
+  #mcollective::plugin::agent { 'package': }
 
-  mcollective::plugin::agent { 'service': }
+  #mcollective::plugin::agent { 'service': }
 
   #mcollective::plugin::agent { 'puppet': }
 
