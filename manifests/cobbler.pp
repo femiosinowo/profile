@@ -21,4 +21,16 @@ class profile::cobbler(){
 }
   
   
+  $cobbler_settings = {
+    'server'        => '10.0.0.20',
+    'next_server'   => '10.0.0.20',
+    'pxe_just_once' => 1
+}
+
+class {'cobbler':
+  cobbler_config => $cobbler_settings,
+}
+  
+  
+  
 }

@@ -28,7 +28,7 @@ class profile::lamp (
   # motd::register{ 'Apache': }
   #}
   # include php
-  # class { 'phpmyadmin': }
+   class { 'phpmyadmin': }
 
   class { '::mysql::server':
     root_password           => $mysql_password,
