@@ -42,11 +42,16 @@ class profile::lamp (
   # gid		=> $lamp_group,
   }
 
-  firewall { '201 allow 80,3306,443':
-    dport  => [80,443,3306],
+  firewall { '101 allow 80,3306,443':
+    dport  => [80,443,139,3306,445],
     proto  => tcp,
     action => accept,
   }
- 
+
+  firewall { '102 allow 3306':
+    dport  => [137,138],
+    proto  => udp,
+    action => accept,
+  }
   
 }
