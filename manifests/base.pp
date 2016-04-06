@@ -49,11 +49,7 @@ class profile::base ($brokerHost = hiera('mcollective::brokerhost')) {
   mcollective::plugin::agent { 'puppet': }
   
   
-     class { 'sensu':
-     rabbitmq_password  => 'correct-horse-battery-staple',
-     rabbitmq_host      => 'sensu.paosin.local',
-     subscriptions      => 'sensu-test',
-   }
+
 
 }
 
