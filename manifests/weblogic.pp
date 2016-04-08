@@ -11,7 +11,7 @@ class profile::weblogic(){
   x64                   => true,
   download_dir          => "/install",
   urandom_java_fix      => false,
-  source_path           => "puppet:///modules/profile/",
+  source_path           => "/root/software",
   default_links         => true,
   install_alternatives  => false,
 }
