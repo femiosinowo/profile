@@ -3,9 +3,9 @@ class profile::weblogic(){
  
  #jdk
  include jdk7
- jdk7::install7{ 'jdk1.7.0_79':
-  version               => "7u79" ,
-  full_version          => "jdk1.7.0_79",
+ jdk7::install7{ 'jdk1.7.0_25':
+  version               => "7u25" ,
+  full_version          => "jdk1.7.0_25",
   java_homes            => '/usr/java/',
   alternatives_priority => 18000,
   x64                   => true,
