@@ -1,10 +1,10 @@
 class profile::weblogic(){
  #
- exec { 'cp  -rp /root/software/jdk-7u25-linux-x64.tar.gz .':
-  cwd     => "/etc/puppet/environments/production/modules/profile/files/",
+ #exec { 'cp  -rp /root/software/jdk-7u25-linux-x64.tar.gz .':
+ # cwd     => "/etc/puppet/environments/production/modules/profile/files/",
   #creates => "/var/tmp/myfile",
   #path    => ["/usr/bin", "/usr/sbin"]
-}
+#}
  #jdk
  include jdk7
  jdk7::install7{ 'jdk1.7.0_25':
