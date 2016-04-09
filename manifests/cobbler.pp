@@ -27,9 +27,9 @@ class profile::cobbler(){
     'pxe_just_once' => 1
 }
 
-class {'cobbler':
-  cobbler_config => $cobbler_settings,
-}
+#class {'::cobbler':
+ # cobbler_config => $cobbler_settings,
+#}
   
   
   
