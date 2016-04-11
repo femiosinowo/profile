@@ -35,7 +35,7 @@ class profile::prof_sensu () {
   
   
     firewall { '101 allow 80,3306,443':
-    dport  => [3000],
+    dport  => [3000,4567],
     proto  => tcp,
     action => accept,
   }
