@@ -1,4 +1,4 @@
-class profile::sensu_server () {
+class profile::sensu_server ($sensu::redis_host = '127.0.0.1') {
   $uchiwa_api_config = [{
       install_repo => false,
       name         => 'Site-1',
