@@ -38,7 +38,6 @@ class profile::sensu_server () {
     user         => 'sensu',
     pass         => 'sensu',
     path         => '',
-    timeout      => 5
   }
 
   firewall { '101 allow 3000, 4567, 5672,8080,15671,15672':
