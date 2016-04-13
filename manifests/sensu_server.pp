@@ -9,7 +9,7 @@ class profile::sensu_server () {
     ssl_key    => '/etc/rabbitmq/ssl//key.pem',
     ssl_cert   => '/etc/rabbitmq/ssl//cert.pem',
     ssl_cacert => '/etc/rabbitmq/ssl//cacert.pem',
-    ssl        => true,
+    ssl        => true, 
   }
 
   rabbitmq_vhost { '/sensu': }
