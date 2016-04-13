@@ -1,5 +1,5 @@
 class profile::sensu_client () {
-  class { 'sensu':
+  class { '::sensu':
     server            => false,
     api               => true,
     rabbitmq_user     => 'sensu',
