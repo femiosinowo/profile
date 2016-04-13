@@ -11,7 +11,7 @@ class profile::sensu_server () {
       insecure     => false,
       port         => 4567,
       user         => 'sensu',
-      pass         => 'sensu',
+      pass         => 'password',
       path         => '',
       timeout      => 5
     }
