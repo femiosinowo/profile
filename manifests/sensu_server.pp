@@ -1,17 +1,11 @@
 class profile::sensu_server () {
-  $uchiwa_api_config = [
-    #    {
-    #      host  => '10.56.5.8',
-    #    },
-    {
+  $uchiwa_api_config = [{
       install_repo => false,
       name         => 'Site1',
       host         => '10.0.0.57',
       ssl          => false,
       insecure     => false,
       port         => 4567,
-      user         => 'sensu',
-      pass         => 'sensu',
       path         => '',
       timeout      => 10
     }
