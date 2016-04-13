@@ -20,7 +20,7 @@ class profile::sensu_server () {
     read_permission      => '.*',
     write_permission     => '.*',
   } ->
-  class { 'redis'} ->
+  class { 'redis':} ->
   class { 'sensu':
     server                   => true,
     rabbitmq_password        => 'password',
