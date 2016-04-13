@@ -1,5 +1,5 @@
 class profile::sensu_server () {
-  #include 'erlang'
+  include ::uchiwa
 
   file { '/etc/rabbitmq/ssl/cacert.pem': source => 'puppet:///modules/profile/ssl_certs/sensu_ca/cacert.pem', }
 
@@ -20,7 +20,7 @@ class profile::sensu_server () {
     read_permission      => '.*',
     write_permission     => '.*',
   } ->
-  class { 'redis':} ->
+  class { 'redis': } ->
   class { 'sensu':
     server                   => true,
     rabbitmq_password        => 'password',
@@ -31,7 +31,7 @@ class profile::sensu_server () {
   }
 
   firewall { '101 allow 3000, 4567, 5672,8080,15671,15672':
-    dport  => [3000, 4567, 5672,8080,15671,15672],
+    dport  => [3000, 4567, 5672, 8080, 15671, 15672],
     proto  => tcp,
     action => accept,
   }
