@@ -28,7 +28,7 @@ class profile::sensu_server () {
 
   class { 'sensu':
     server                   => true,
-    purge_config             => true,
+   # purge_config             => true,
     rabbitmq_password        => 'password',
     rabbitmq_ssl_private_key => "puppet:///modules/profiles/puppet/ssl_certs/client/key.pem",
     rabbitmq_ssl_cert_chain  => "puppet:///modules/profiles/puppet/ssl_certs/client/cert.pem",
