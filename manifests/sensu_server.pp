@@ -40,6 +40,28 @@ class profile::sensu_server () {
     path         => '',
   }
 
+  $uchiwa_api_config = [
+    #    {
+    #      host  => '10.56.5.8',
+    #    },
+    {
+      install_repo => false,
+      name         => 'sensu.paosin.local',
+      host         => 'sensu.paosin.local',
+      ssl          => false,
+      insecure     => false,
+      port         => 4567,
+      user         => 'sensu',
+      pass         => 'sensu',
+      path         => '',
+      timeout      => 5
+    }
+    ]
+
+  class { 'uchiwa':
+    sensu_api_endpoints => $uchiwa_api_config,
+  }
+
   firewall { '101 allow 3000, 4567, 5672,8080,15671,15672':
     dport  => [3000, 4567, 5672, 8080, 15671, 15672],
     proto  => tcp,
