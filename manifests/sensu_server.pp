@@ -30,8 +30,8 @@ class profile::sensu_server () {
     subscriptions            => 'sensu-test',
   }
 
-  firewall { '101 allow 3000, 4567, 5672,8080':
-    dport  => [3000, 4567, 5672,8080],
+  firewall { '101 allow 3000, 4567, 5672,8080,15671,15672':
+    dport  => [3000, 4567, 5672,8080,15671,15672],
     proto  => tcp,
     action => accept,
   }
