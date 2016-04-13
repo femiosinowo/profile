@@ -15,7 +15,7 @@ class profile::sensu_server () {
   rabbitmq_vhost { '/sensu': }
 
   rabbitmq_user { 'sensu': password => 'password' }
-
+ 
   rabbitmq_user_permissions { 'sensu@/sensu':
     configure_permission => '.*',
     read_permission      => '.*',
