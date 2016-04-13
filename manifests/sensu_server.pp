@@ -11,7 +11,7 @@ class profile::sensu_server () {
       insecure     => false,
       port         => 4567,
       user         => 'sensu',
-      pass         => 'password',
+      pass         => 'sensu',
       path         => '',
       timeout      => 5
     }
@@ -30,7 +30,7 @@ class profile::sensu_server () {
     ssl        => false,
   } ->
   rabbitmq_vhost { '/sensu': } ->
-  rabbitmq_user { 'sensu': password => 'password' } ->
+  rabbitmq_user { 'sensu': password => 'sensu' } ->
   rabbitmq_user_permissions { 'sensu@/sensu':
     configure_permission => '.*',
     read_permission      => '.*',
@@ -40,7 +40,7 @@ class profile::sensu_server () {
   class { 'sensu':
     server => true,
     api    => true,
-    rabbitmq_password        => 'password',
+    rabbitmq_password        => 'sensu',
     rabbitmq_ssl_private_key => "puppet:///modules/profile/ssl_certs/client/key.pem",
     rabbitmq_ssl_cert_chain  => "puppet:///modules/profile/ssl_certs/client/cert.pem",
     rabbitmq_host            => 'sensu.paosin.local',
