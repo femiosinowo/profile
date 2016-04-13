@@ -47,7 +47,7 @@ class profile::sensu_server ($sensu::redis_host = '127.0.0.1') {
   }
 
   firewall { '101 allow 3000, 4567, 5672,8080,15671,15672':
-    dport  => [3000, 4567, 5672, 8080, 15671, 15672],
+    dport  => [3000, 4567, 5672, 8080, 15671, 15672,4242,],
     proto  => tcp,
     action => accept,
   }
