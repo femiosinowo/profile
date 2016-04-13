@@ -1,11 +1,11 @@
 class profile::sensu_server () {
   #include 'erlang'
 
-  file { '/etc/rabbitmq/ssl/cacert.pem': source => 'puppet:///modules/profiles/ssl_certs/sensu_ca/cacert.pem', }
+  file { '/etc/rabbitmq/ssl/cacert.pem': source => 'puppet:///modules/profile/ssl_certs/sensu_ca/cacert.pem', }
 
-  file { '/etc/rabbitmq/ssl/cert.pem': source => 'puppet:///modules/profiles/ssl_certs/server/cert.pem', }
+  file { '/etc/rabbitmq/ssl/cert.pem': source => 'puppet:///modules/profile/ssl_certs/server/cert.pem', }
 
-  file { '/etc/rabbitmq/ssl/key.pem': source => 'puppet:///modules/profiles/ssl_certs/server/key.pem', }
+  file { '/etc/rabbitmq/ssl/key.pem': source => 'puppet:///modules/profile/ssl_certs/server/key.pem', }
   class { 'erlang': epel_enable => true } ->
   class { 'rabbitmq':
     ssl_key    => '/etc/rabbitmq/ssl//key.pem',
@@ -24,8 +24,8 @@ class profile::sensu_server () {
   class { 'sensu':
     server                   => true,
     rabbitmq_password        => 'password',
-    rabbitmq_ssl_private_key => "puppet:///modules/profiles/ssl_certs/client/key.pem",
-    rabbitmq_ssl_cert_chain  => "puppet:///modules/profiles/ssl_certs/client/cert.pem",
+    rabbitmq_ssl_private_key => "puppet:///modules/profile/ssl_certs/client/key.pem",
+    rabbitmq_ssl_cert_chain  => "puppet:///modules/profile/ssl_certs/client/cert.pem",
     rabbitmq_host            => 'sensu.paosin.local',
     subscriptions            => 'sensu-test',
   }
