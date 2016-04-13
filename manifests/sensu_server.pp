@@ -1,5 +1,5 @@
 class profile::sensu_server () {
-  include ::uchiwa
+  
 
   file { '/etc/rabbitmq/ssl/cacert.pem': source => 'puppet:///modules/profile/ssl_certs/sensu_ca/cacert.pem', }
 
@@ -28,7 +28,10 @@ class profile::sensu_server () {
     rabbitmq_ssl_cert_chain  => "puppet:///modules/profile/ssl_certs/client/cert.pem",
     rabbitmq_host            => 'sensu.paosin.local',
     subscriptions            => 'sensu-test',
-  }
+  }->
+  class { '::uchiwa':
+  install_repo => false,
+}
 
   firewall { '101 allow 3000, 4567, 5672,8080,15671,15672':
     dport  => [3000, 4567, 5672, 8080, 15671, 15672],
