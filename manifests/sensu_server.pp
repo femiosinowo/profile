@@ -1,7 +1,5 @@
 class profile::sensu_server () {
-  
-  
-    $uchiwa_api_config = [
+  $uchiwa_api_config = [
     #    {
     #      host  => '10.56.5.8',
     #    },
@@ -18,8 +16,7 @@ class profile::sensu_server () {
       timeout      => 5
     }
     ]
-    
-    
+
   file { '/etc/rabbitmq/ssl/cacert.pem': source => 'puppet:///modules/profile/ssl_certs/sensu_ca/cacert.pem', }
 
   file { '/etc/rabbitmq/ssl/cert.pem': source => 'puppet:///modules/profile/ssl_certs/server/cert.pem', }
@@ -49,9 +46,8 @@ class profile::sensu_server () {
     rabbitmq_host            => 'sensu.paosin.local',
     subscriptions            => 'sensu-test',
   } ->
- 
-
   class { 'uchiwa':
+    install_repo        => false,
     sensu_api_endpoints => $uchiwa_api_config,
   }
 
