@@ -1,4 +1,7 @@
 class profile::sensu_server () {
+  
+  include '::rabbitmq'
+  
   file { '/etc/rabbitmq/ssl/cacert.pem': source => 'puppet:///modules/profiles/puppet/ssl_certs/sensu_ca/cacert.pem', }
 
   file { '/etc/rabbitmq/ssl/cert.pem': source => 'puppet:///modules/profiles/puppet/ssl_certs/server/cert.pem', }
@@ -28,7 +31,6 @@ class profile::sensu_server () {
 
   class { 'sensu':
     server                   => true,
-   # purge_config             => true,
     rabbitmq_password        => 'password',
     rabbitmq_ssl_private_key => "puppet:///modules/profiles/puppet/ssl_certs/client/key.pem",
     rabbitmq_ssl_cert_chain  => "puppet:///modules/profiles/puppet/ssl_certs/client/cert.pem",
