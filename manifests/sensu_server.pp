@@ -20,7 +20,7 @@ class profile::sensu_server () {
     read_permission      => '.*',
     write_permission     => '.*',
   } ->
-  class { 'redis': bind => '127.0.0.1'; } ->
+  class { 'redis'} ->
   class { 'sensu':
     server                   => true,
     rabbitmq_password        => 'password',
