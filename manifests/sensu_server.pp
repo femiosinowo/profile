@@ -1,5 +1,5 @@
 class profile::sensu_server () {
-  include 'erlang'
+  #include 'erlang'
 
   file { '/etc/rabbitmq/ssl/cacert.pem': source => 'puppet:///modules/profiles/puppet/ssl_certs/sensu_ca/cacert.pem', }
 
