@@ -36,7 +36,7 @@ class profile::sensu_server () {
     read_permission      => '.*',
     write_permission     => '.*',
   } ->
-  class { 'redis': } ->
+  class { 'redis': listen => '127.0.0.1' } ->
   class { 'sensu':
     server => true,
     api    => true,
