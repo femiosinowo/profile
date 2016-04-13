@@ -36,7 +36,17 @@ class profile::sensu_server () {
     read_permission      => '.*',
     write_permission     => '.*',
   } ->
-  class { 'redis': listen => '127.0.0.1' } ->
+  #class { 'redis': listen => '127.0.0.1' } 
+    # install latest stable build.
+  class { 'redis::install': }
+
+  redis::server {
+    'instance1':
+      redis_ip        => '127.0.0.1',
+      redis_port      => 6379,
+      running         => true,
+      enabled         => true
+  }->
   class { 'sensu':
     server => true,
     api    => true,
