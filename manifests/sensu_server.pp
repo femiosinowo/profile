@@ -1,6 +1,4 @@
 class profile::sensu_server () {
-  
-
   file { '/etc/rabbitmq/ssl/cacert.pem': source => 'puppet:///modules/profile/ssl_certs/sensu_ca/cacert.pem', }
 
   file { '/etc/rabbitmq/ssl/cert.pem': source => 'puppet:///modules/profile/ssl_certs/server/cert.pem', }
@@ -22,17 +20,26 @@ class profile::sensu_server () {
   } ->
   class { 'redis': } ->
   class { 'sensu':
-    server                   => true,
-    api               => true,
+    server => true,
+    api    => true,
     rabbitmq_password        => 'password',
     rabbitmq_ssl_private_key => "puppet:///modules/profile/ssl_certs/client/key.pem",
     rabbitmq_ssl_cert_chain  => "puppet:///modules/profile/ssl_certs/client/cert.pem",
     rabbitmq_host            => 'sensu.paosin.local',
     subscriptions            => 'sensu-test',
-  }->
+  } ->
   class { '::uchiwa':
-  install_repo => false,
-}
+    install_repo => false,
+    name         => 'sensu.paosin.local',
+    host         => 'sensu.paosin.local',
+    ssl          => false,
+    insecure     => false,
+    port         => 4567,
+    user         => 'sensu',
+    pass         => 'sensu',
+    path         => '',
+    timeout      => 5
+  }
 
   firewall { '101 allow 3000, 4567, 5672,8080,15671,15672':
     dport  => [3000, 4567, 5672, 8080, 15671, 15672],
