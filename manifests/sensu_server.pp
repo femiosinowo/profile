@@ -5,7 +5,7 @@ class profile::sensu_server () {
     #    },
     {
       install_repo => false,
-      name         => 'sensu.paosin.local',
+      name         => 'Site1',
       host         => '10.0.0.57',
       ssl          => false,
       insecure     => false,
@@ -13,7 +13,7 @@ class profile::sensu_server () {
       user         => 'sensu',
       pass         => 'sensu',
       path         => '',
-      timeout      => 5
+      timeout      => 10
     }
     ]
 
