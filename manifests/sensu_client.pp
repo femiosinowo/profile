@@ -10,8 +10,8 @@ class profile::sensu_client () {
     rabbitmq_ssl_cert_chain  => "puppet:///modules/profile/ssl_certs/client/cert.pem",
 
     redis_password           => 'sensu',
-    redis_host               => $sensu::serverip,
-    api_host                 => $sensu::serverip,
-    rabbitmq_host            => $sensu::serverip,
+    redis_host               => $serverip,
+    api_host                 => $serverip,
+    rabbitmq_host            => $serverip,
   }
 }
