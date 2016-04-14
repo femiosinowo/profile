@@ -33,13 +33,17 @@ class profile::sensu_server ($sensu::redis_host = '127.0.0.1') {
   class { 'redis': listen => '127.0.0.1' } ->
   class { 'sensu':
     server            => true,
-    api               => false,
+    api               => true,
     rabbitmq_user     => 'sensu',
     rabbitmq_password => 'sensu',
 #    rabbitmq_ssl_private_key => "puppet:///modules/profile/ssl_certs/client/key.pem",
 #    rabbitmq_ssl_cert_chain  => "puppet:///modules/profile/ssl_certs/client/cert.pem",
     rabbitmq_host     => 'localhost',
     redis_host        => '127.0.0.1',
+    api_host          => '127.0.0.1',
+    api_user     => 'sensu',
+    api_password => 'sensu',
+    
   } ->
   class { 'uchiwa':
     install_repo        => false,
