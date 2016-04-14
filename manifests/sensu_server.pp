@@ -49,7 +49,7 @@ class profile::sensu_server ($sensu::redis_host = '127.0.0.1') {
   class { 'uchiwa':
     install_repo        => false,
     sensu_api_endpoints => $uchiwa_api_config,
-  }
+  }->
 
   firewall { '101 allow 3000, 4567, 5672,8080,15671,15672':
     dport  => [3000, 4567, 5672, 8080, 15671, 15672,4242],
