@@ -40,7 +40,7 @@ class profile::sensu_server ($sensu::redis_host = '127.0.0.1') {
 #    rabbitmq_ssl_cert_chain  => "puppet:///modules/profile/ssl_certs/client/cert.pem",
     rabbitmq_host     => 'localhost',
     redis_host        => '127.0.0.1',
-    api_host          => '127.0.0.1',
+    api_host          => '10.0.0.57',
     api_user     => 'sensu',
     api_password => 'sensu',
     
