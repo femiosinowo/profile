@@ -1,7 +1,7 @@
 class profile::sensu_client () {
   class { 'sensu':
     server     => false,
-    api        => true,
+    api        => false,
     rabbitmq_user            => 'sensu',
     rabbitmq_password        => 'sensu',
     rabbitmq_vhost           => '/sensu',
