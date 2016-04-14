@@ -43,6 +43,7 @@ class profile::sensu_server ($sensu::redis_host = '127.0.0.1') {
     api_host          => '10.0.0.57',
     api_user     => 'sensu',
     api_password => 'sensu',
+    api_port  => 4567,
     
   } ->
   class { 'uchiwa':
