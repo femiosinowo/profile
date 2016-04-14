@@ -1,4 +1,4 @@
-class profile::sensu_client () {
+class profile::sensu_client ($sensu_server_ip = hiera('sensu::server_ip')) {
   class { 'sensu':
     server     => false,
     api        => false,
