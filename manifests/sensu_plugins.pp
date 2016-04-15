@@ -15,5 +15,12 @@ class profile::sensu_plugins () {
     subscribers => 'base',
     require     => Staging::Deploy['sensu-community-plugins.tar.gz'],
   }
+  
+  sensu::check { 'check_disk':
+    command => '/opt/sensu-plugins/sensu-community-plugins-master/plugins/system/check-disk.rb',
+    handlers => 'default',
+    subscribers => 'base',
+    require => Staging::Deploy['sensu-community-plugins.tar.gz'],
+  }
 
 }
