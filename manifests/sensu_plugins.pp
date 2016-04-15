@@ -3,7 +3,7 @@ class profile::sensu_plugins () {
     ensure   => latest,
     provider => yum,
   }
-  package { 'ruby193-ruby':
+  package { 'ruby193':
     ensure   => latest,
     provider => yum,
     require => Package['centos-release-SCL']
