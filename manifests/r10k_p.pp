@@ -1,20 +1,20 @@
 class profile::r10k_p {
-  class { 'r10k':
-    sources => {
-      'modules' => {
-        'remote'  => 'https://github.com/femiosinowo/r10k.git',
-        'basedir' => "${::settings::confdir}/environments",
-      }
-      ,
-      'hiera'   => {
-        'remote'  => 'https://github.com/femiosinowo/hieradata.git',
-        'basedir' => "${::settings::confdir}/hieradata",
-        'prefix'  => false,
-      }
-      ,
-    }
-    ,
-  }
+#  class { 'r10k':
+#    sources => {
+#      'modules' => {
+#        'remote'  => 'https://github.com/femiosinowo/r10k.git',
+#        'basedir' => "${::settings::confdir}/environments",
+#      }
+#      ,
+#      'hiera'   => {
+#        'remote'  => 'https://github.com/femiosinowo/hieradata.git',
+#        'basedir' => "${::settings::confdir}/hieradata",
+#        'prefix'  => false,
+#      }
+#      ,
+#    }
+#    ,
+#  }
 
 #### Webhooks removed cos it is not PE ###########################
 
