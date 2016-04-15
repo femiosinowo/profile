@@ -31,21 +31,21 @@ class profile::sensu_server ($sensu_server_ip = hiera('sensu::server_ip'), $sens
     write_permission     => '.*',
   } ->
   class { 'redis': listen => '127.0.0.1' } ->
-  class { 'sensu':
-    server            => true,
-    api               => true,
-    rabbitmq_user     => 'sensu',
-    rabbitmq_password => 'sensu',
-    rabbitmq_vhost    => '/sensu',
-    #    rabbitmq_ssl_private_key => "puppet:///modules/profile/ssl_certs/client/key.pem",
-    #    rabbitmq_ssl_cert_chain  => "puppet:///modules/profile/ssl_certs/client/cert.pem",
-    rabbitmq_host     => 'localhost',
-    redis_host        => '127.0.0.1',
-    api_host          => $sensu_server_ip,
-    api_user          => 'sensu',
-    api_password      => 'sensu',
-    api_port          => 4567,
-  } ->
+#  class { 'sensu':
+#    server            => true,
+#    api               => true,
+#    rabbitmq_user     => 'sensu',
+#    rabbitmq_password => 'sensu',
+#    rabbitmq_vhost    => '/sensu',
+#    #    rabbitmq_ssl_private_key => "puppet:///modules/profile/ssl_certs/client/key.pem",
+#    #    rabbitmq_ssl_cert_chain  => "puppet:///modules/profile/ssl_certs/client/cert.pem",
+#    rabbitmq_host     => 'localhost',
+#    redis_host        => '127.0.0.1',
+#    api_host          => $sensu_server_ip,
+#    api_user          => 'sensu',
+#    api_password      => 'sensu',
+#    api_port          => 4567,
+#  } ->
   class { 'uchiwa':
     install_repo        => false,
     sensu_api_endpoints => $uchiwa_api_config,
