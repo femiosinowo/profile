@@ -4,9 +4,9 @@ class profile::sensu_plugins () {
     provider => yum,
   }
 
-  class { 'ruby':
-    version         => '1.9.3',
-    rubygems_update => false
+  class { 'ruby193-ruby':
+    # version         => '1.9.3',
+    rubygems_update => true
   }
 
   file { '/opt/sensu-plugins': ensure => directory, }
