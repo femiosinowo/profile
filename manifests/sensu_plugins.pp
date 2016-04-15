@@ -1,15 +1,13 @@
 class profile::sensu_plugins () {
-  
-    package { 'centos-release-SCL':
+  package { 'centos-release-SCL':
     ensure   => latest,
     provider => yum,
   }
-  
+
   class { 'ruby':
-  version         => '1.9.3',
-  gems_version    => '1.8.24',
-  rubygems_update => false
-}
+    version         => '1.9.3',
+    rubygems_update => false
+  }
 
   file { '/opt/sensu-plugins': ensure => directory, }
 
