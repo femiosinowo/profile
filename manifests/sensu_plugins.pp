@@ -3,11 +3,12 @@ class profile::sensu_plugins () {
     ensure   => latest,
     provider => yum,
   }
-
-  class { 'ruby193-ruby':
-    # version         => '1.9.3',
-    rubygems_update => true
+  package { 'ruby193-ruby':
+    ensure   => latest,
+    provider => yum,
+    require => Package['centos-release-SCL']
   }
+ 
 
   file { '/opt/sensu-plugins': ensure => directory, }
 
