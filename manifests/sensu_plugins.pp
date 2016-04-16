@@ -10,7 +10,7 @@ class profile::sensu_plugins () {
     require  => Package['centos-release-SCL']
   }
 
-  profiled::script { 'ruby193.sh': content => 'source /opt/rh/ruby193/enable' }
+  #profiled::script { 'ruby193.sh': content => 'source /opt/rh/ruby193/enable' }
 
   file { '/opt/sensu-plugins': ensure => directory, }
 
