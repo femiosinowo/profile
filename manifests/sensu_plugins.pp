@@ -13,7 +13,7 @@ class profile::sensu_plugins () {
 
   profile::plugchecksensu { 'selinux':
     pluginname => 'sensu-plugins-selinux',
-    command    => 'check-selinux'
+    command    => 'check-selinux.rb'
   }
 
   profile::plugchecksensu { 'ntp':
