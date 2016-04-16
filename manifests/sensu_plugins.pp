@@ -31,6 +31,11 @@ class profile::sensu_plugins () {
     command    => 'check-memory-percent.rb'
   }
 
+  profile::plugchecksensu { 'logstash':
+    pluginname => 'sensu-plugins-logstash',
+    command    => 'handler-logstash'
+  }
+
   #  sensu::check { 'check_disk':
   #    command     => 'check-disk-usage.rb -w 80 -c 90',
   #    handlers    => 'default',

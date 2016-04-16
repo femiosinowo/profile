@@ -10,15 +10,9 @@ class profile::activemq () {
   #  class { '::activemq': package_type => 'rpm', }
   #
 
-  profile::plugchecksensu { 'selinux':
-    pluginname => 'sensu-plugins-selinux',
-    command    => 'check-selinux'
-  }
+   
 
-  profile::plugchecksensu { 'logstash':
-    pluginname => 'sensu-plugins-logstash',
-    command    => 'handler-logstash'
-  }
+ 
 
   # profile::plugchecksensu('sensu-plugins-selinux','check-selinux')
 
