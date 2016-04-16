@@ -17,7 +17,7 @@ class profile::sensu_plugins () {
   sensu::handler { 'default': command => 'mail -s \'sensu alert\' femi@paosin.local', }
 
   package { 'sensu-plugins-cpu-checks':
-    ensure   => 'absent',
+    ensure   => 'installed',
     provider => sensu_gem,
   }
 
@@ -27,7 +27,7 @@ class profile::sensu_plugins () {
   }
 
   package { 'sensu-plugins-disk-checks':
-    ensure   => 'absent',
+    ensure   => 'installed',
     provider => sensu_gem,
   }
 
