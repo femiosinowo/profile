@@ -21,6 +21,10 @@ class profile::sensu_plugins () {
     provider => sensu_gem,
   }
 
+package { 'sensu-plugins-ntp':
+    ensure   => 'installed',
+    provider => sensu_gem,
+  }
   package { 'sensu-plugins-disk-checks':
     ensure   => 'installed',
     provider => sensu_gem,
