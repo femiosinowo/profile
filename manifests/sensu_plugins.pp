@@ -17,12 +17,12 @@ class profile::sensu_plugins () {
   sensu::handler { 'default': command => 'mail -s \'sensu alert\' femi@paosin.local', }
 
   package { 'sensu-plugins-cpu-checks':
-    ensure   => '0.0.1',
+
     provider => sensu_gem,
   }
 
   package { 'sensu-plugins-disk-checks':
-    ensure   => '0.0.1',
+   
     provider => sensu_gem,
   }
 
