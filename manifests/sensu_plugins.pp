@@ -2,6 +2,8 @@ class profile::sensu_plugins () {
   Exec {
     path => '/usr/bin:/opt/sensu/embedded/bin/', }
 
+  pathmunge { '/opt/sensu/embedded/bin/': }
+
   sensu::handler { 'default': command => 'mail -s \'sensu alert\' femi@paosin.local', }
 
   package { 'sensu-plugins-cpu-checks':
@@ -30,6 +32,7 @@ class profile::sensu_plugins () {
     subscribers => 'base',
     require     => Package['sensu-plugins-cpu-checks'],
   }
+
   sensu::check { 'check_memory':
     command     => 'check-memory-percent.rb',
     handlers    => 'default',
