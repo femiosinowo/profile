@@ -31,10 +31,10 @@ class profile::sensu_plugins () {
     command    => 'check-memory-percent.rb'
   }
 
-  profile::plugchecksensu { 'logstash':
-    pluginname => 'sensu-plugins-logstash',
-    command    => 'handler-logstash'
-  }
+#  profile::plugchecksensu { 'logstash':
+#    pluginname => 'sensu-plugins-logstash',
+#    command    => 'handler-logstash'
+#  }
 
   profile::plugchecksensu { 'fs-check':
     pluginname => ' sensu-plugins-filesystem-checks',
