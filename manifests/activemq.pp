@@ -14,8 +14,8 @@ class profile::activemq () {
   #   profile::plugchecksensu::pluginname: 'sensu-plugins-selinux'
   #   profile::plugchecksensu::command: 'sensu-plugins-selinux'
   # profile::plugchecksensu::pluginname: 'sensu-plugins-selinux'
-  class { 'profile::plugchecksensu':
-  }
+  # class { 'profile::plugchecksensu':
+  #}
 
   profile::plugchecksensu { 'selinux':
     pluginname => 'sensu-plugins-selinux',
