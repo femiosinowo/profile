@@ -12,7 +12,7 @@ class profile::activemq () {
   #  class { '::activemq::stomp': port => 61613, }
 
 
-profile::plugchecksensu('sensu-plugins-selinux')
+profile::plugchecksensu('sensu-plugins-selinux','check-selinux')
 
   firewall { '120 allow puppet stuff':
     dport  => [61613, 61614, 8160, 8161],
