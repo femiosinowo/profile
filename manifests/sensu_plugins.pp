@@ -6,39 +6,44 @@ class profile::sensu_plugins () {
 
   sensu::handler { 'default': command => 'mail -s \'sensu alert\' femi@paosin.local', }
 
-  package { 'sensu-plugins-cpu-checks':
-    ensure   => 'installed',
-    provider => sensu_gem,
+  profile::plugchecksensu { 'cpu-checks':
+    pluginname => 'sensu-plugins-cpu-checks',
+    command    => 'check-cpu.rb'
   }
 
-  package { 'sensu-plugins-ntp':
-    ensure   => 'installed',
-    provider => sensu_gem,
+  profile::plugchecksensu { 'selinux':
+    pluginname => 'sensu-plugins-selinux',
+    command    => 'check-selinux'
   }
 
-  package { 'sensu-plugins-disk-checks':
-    ensure   => 'installed',
-    provider => sensu_gem,
+  profile::plugchecksensu { 'ntp':
+    pluginname => 'sensu-plugins-ntp',
+    command    => 'check-ntp.rb'
   }
 
-  package { 'sensu-plugins-memory-checks':
-    ensure   => 'installed',
-    provider => sensu_gem,
+  profile::plugchecksensu { 'disk-check':
+    pluginname => 'sensu-plugins-disk-checks',
+    command    => 'check-disk-usage.rb -w 80 -c 90'
   }
 
-  sensu::check { 'check_disk':
-    command     => 'check-disk-usage.rb -w 80 -c 90',
-    handlers    => 'default',
-    subscribers => 'base',
-    require     => Package['sensu-plugins-cpu-checks'],
+  profile::plugchecksensu { 'memory':
+    pluginname => 'sensu-plugins-memory-checks',
+    command    => 'check-memory-percent.rb'
   }
 
-  sensu::check { 'check_memory':
-    command     => 'check-memory-percent.rb',
-    handlers    => 'default',
-    subscribers => 'base',
-    require     => Package['sensu-plugins-memory-checks'],
-  }
+  #  sensu::check { 'check_disk':
+  #    command     => 'check-disk-usage.rb -w 80 -c 90',
+  #    handlers    => 'default',
+  #    subscribers => 'base',
+  #    require     => Package['sensu-plugins-cpu-checks'],
+  #  }
+  #
+  #  sensu::check { 'check_memory':
+  #    command     => 'check-memory-percent.rb',
+  #    handlers    => 'default',
+  #    subscribers => 'base',
+  #    require     => Package['sensu-plugins-memory-checks'],
+  #  }
   #  package { 'centos-release-SCL':
   #    ensure   => latest,
   #    provider => yum,
