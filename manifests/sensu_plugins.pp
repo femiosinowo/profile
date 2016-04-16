@@ -36,10 +36,10 @@ class profile::sensu_plugins () {
 #    command    => 'handler-logstash'
 #  }
 
-  profile::plugchecksensu { 'fs-check':
-    pluginname => ' sensu-plugins-filesystem-checks',
-    command    => 'check-dir-count.rb'
-  }
+#  profile::plugchecksensu { 'fs-check':
+#    pluginname => ' sensu-plugins-filesystem-checks',
+#    command    => 'check-dir-count.rb'
+#  }
 
   #  sensu::check { 'check_disk':
   #    command     => 'check-disk-usage.rb -w 80 -c 90',
