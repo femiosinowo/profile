@@ -1,4 +1,4 @@
-class profile::plugchecksensu ($pluginname = '', $command='', $installed = 'installed') {
+define profile::plugchecksensu ($pluginname = '', $command='', $installed = 'installed') {
   package { $pluginname:
     ensure   => $installed,
     provider => sensu_gem,

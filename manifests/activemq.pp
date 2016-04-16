@@ -10,12 +10,16 @@ class profile::activemq () {
   #  class { '::activemq': package_type => 'rpm', }
   #
   #  class { '::activemq::stomp': port => 61613, }
-
   # include profile::plugchecksensu
+  #   profile::plugchecksensu::pluginname: 'sensu-plugins-selinux'
+  #   profile::plugchecksensu::command: 'sensu-plugins-selinux'
+  # profile::plugchecksensu::pluginname: 'sensu-plugins-selinux'
   class { 'profile::plugchecksensu':
+  }
+
+  profile::plugchecksensu { 'selinux':
     pluginname => 'sensu-plugins-selinux',
-    command    => 'check-selinux',
-    installed  => 'installed'
+    command    => 'check-selinux'
   }
 
   # profile::plugchecksensu('sensu-plugins-selinux','check-selinux')
