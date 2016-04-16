@@ -10,19 +10,24 @@ class profile::sensu_plugins () {
     require  => Package['centos-release-SCL']
   }
 
-  #profiled::script { 'ruby193.sh': content => 'source /opt/rh/ruby193/enable' }
+  # profiled::script { 'ruby193.sh': content => 'source /opt/rh/ruby193/enable' }
 
   file { '/opt/sensu-plugins': ensure => directory, }
 
   sensu::handler { 'default': command => 'mail -s \'sensu alert\' femi@paosin.local', }
 
   package { 'sensu-plugins-cpu-checks':
-
+    ensure   => 'installed',
     provider => sensu_gem,
   }
 
   package { 'sensu-plugins-disk-checks':
-   
+    ensure   => 'installed',
+    provider => sensu_gem,
+  }
+
+  package { 'redphone':
+    ensure   => 'installed',
     provider => sensu_gem,
   }
 
