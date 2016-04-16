@@ -32,6 +32,11 @@ class profile::puppetmaster ($brokerHost = hiera('mcollective::brokerhost')) {
 
   mcollective::plugin::client { 'puppet': }
 
+  package { 'sensu-plugins-puppet':
+    ensure   => 'installed',
+    provider => sensu_gem,
+  }
+
   firewall { '120 allow puppet stuff':
     dport  => [80, 443, 61613, 61614, 8140, 8088],
     proto  => tcp,
