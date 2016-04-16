@@ -17,16 +17,17 @@ class profile::sensu_plugins () {
   sensu::handler { 'default': command => 'mail -s \'sensu alert\' femi@paosin.local', }
 
   package { 'sensu-plugins-cpu-checks':
+    ensure   => 'absent',
+    provider => sensu_gem,
+  }
+
+  package { 'sensu-plugins-ntp':
     ensure   => 'installed',
     provider => sensu_gem,
   }
 
-package { 'sensu-plugins-ntp':
-    ensure   => 'installed',
-    provider => sensu_gem,
-  }
   package { 'sensu-plugins-disk-checks':
-    ensure   => 'installed',
+    ensure   => 'absent',
     provider => sensu_gem,
   }
 
@@ -36,7 +37,7 @@ package { 'sensu-plugins-ntp':
   }
 
   sensu::check { 'check_disk':
-    command     => 'check-disk-usage.rb -w 80 -c 90',
+    command     => '/opt/sensu/embedded/bin/check-disk-usage.rb -w 80 -c 90',
     handlers    => 'default',
     subscribers => 'base',
     require     => Package['sensu-plugins-cpu-checks'],
