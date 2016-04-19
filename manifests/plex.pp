@@ -12,7 +12,7 @@ class profile::plex () {
 
 
   include plexmediaserver
-  file { '/plex':
+  file { '/home/plexthings':
     ensure => directory,
     owner  => 'plex',
     group  => 'plex',
@@ -27,7 +27,7 @@ class profile::plex () {
 
   samba::server::share { 'PlexMovies':
     comment              => 'PlexMovies',
-    path                 => '/plex',
+    path                 => '/home/plexthings',
     # # guest_only           => true,
     guest_ok             => true,
     # guest_account        => "guest",
@@ -48,7 +48,7 @@ class profile::plex () {
     password  => 'asdf',
     user_name => 'femi',
   }
-  
+
   user { 'femi':
     ensure => present,
     groups => 'plex',
