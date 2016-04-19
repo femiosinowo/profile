@@ -20,56 +20,28 @@ class profile::plex () {
   #    plex_media_server_tmpdir => '/var/tmp',
   }
 
-  ::samba::share { 'Plex Movies':
-    # Mandatory parameters
-    path             => '/plex/',
-    # Optionnal parameters
-    manage_directory => true, # * let the resource handle the shared
-                              #   directory creation (default: true)
-    owner            => 'plex', # * owner of the share directory
-                                #   (default: root)
-    group            => 'plex', # * group of the share directory
-                                #   (default: root)
-    mode             => '0775', # * mode of the share directory
-                                #   (default: 0777)
-    acl              => [], # * list of posix acls (default: undef)
-    options          => {
-      'browsable'    => 'Yes',
-      'root preexec' => 'mkdir -p \'/home/home_%U\'',
+ 
+
+   class { 'samba::server':
+      workgroup     => 'plex',
+      server_string => "Movies",
+      interfaces    => "eth0 lo",
+      security      => 'share'
     }
-    ,
-    absentoptions    => ['path'], # * Remove default settings put by this resource
-                                  #   default?: []
-  }
-
-  smb_user { 'plex': # * user name
-    ensure   => present, # * absent | present
-    password => 'P!ssw0rd', # * user password
-    groups   => [
-      'plex', # * list of groups
-      'administrators'],
-  }
-
-  #  class { 'samba::server':
-  #    workgroup     => 'plex',
-  #    server_string => "Movies",
-  #    interfaces    => "eth0 lo",
-  #    security      => 'share'
-  #  }
-  #
-  #  samba::server::share { 'PlexMovies':
-  #    comment              => 'PlexMovies',
-  #    path                 => '/plex',
-  #    # # guest_only           => true,
-  #    guest_ok             => true,
-  #    # guest_account        => "guest",
-  #    browsable            => true,
-  #    create_mask          => 0777,
-  #    force_create_mask    => 0777,
-  #    directory_mask       => 0777,
-  #    force_directory_mask => 0777,
+  
+    samba::server::share { 'PlexMovies':
+      comment              => 'PlexMovies',
+      path                 => '/plex',
+      # # guest_only           => true,
+      guest_ok             => true,
+      # guest_account        => "guest",
+      browsable            => true,
+      create_mask          => 0777,
+      force_create_mask    => 0777,
+      directory_mask       => 0777,
+      force_directory_mask => 0777,
   #  #    force_group          => 'group',
   #  #    force_user           => 'user',
   #  #    copy                 => 'some-other-share',
-  #  }
+    }
 }
