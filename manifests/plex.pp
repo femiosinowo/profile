@@ -44,7 +44,7 @@ class profile::plex () {
   #  #    copy                 => 'some-other-share',
   }
 
-  class { 'samba::server::user':
+  samba::server::user { 'plex':
     password  => 'asdf',
     user_name => 'plex',
   }
