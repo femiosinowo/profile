@@ -36,6 +36,9 @@ class profile::plex () {
     force_create_mask    => 0777,
     directory_mask       => 0777,
     force_directory_mask => 0777,
+    public               => yes,
+    writable             => yes,
+
   #  #    force_group          => 'group',
   #  #    force_user           => 'user',
   #  #    copy                 => 'some-other-share',
