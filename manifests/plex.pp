@@ -44,6 +44,11 @@ class profile::plex () {
   #  #    copy                 => 'some-other-share',
   }
 
+  samba::server::user { 'plex':
+    password  => 'asdf',
+    user_name => 'plex',
+  }
+
   firewall { '120 allow puppet stuff':
     dport  => [139, 445, 3005, 8324, 32469, 32400],
     proto  => tcp,
