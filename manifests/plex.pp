@@ -10,7 +10,7 @@ class profile::plex () {
     plex_media_server_tmpdir => '/var/tmp',
   }
 
-  file { '/plex': ensure => directory, } ->
+  file { '/plex': ensure => directory,   owner   => 'plex', group => 'plex'} ->
   class { 'samba::server':
     workgroup     => 'plex',
     server_string => "Movies",
