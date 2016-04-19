@@ -1,16 +1,22 @@
 class profile::plex () {
-  class { 'plexmediaserver':
-    plex_user                => 'plex',
-    plex_media_server_home   => '/plex',
-    plex_media_server_application_support_dir => "/var/lib/plexmediaserver",
-    plex_media_server_max_plugin_procs        => '7',
-    plex_media_server_max_stack_size          => '20000',
-    plex_media_server_max_lock_mem            => '4000',
-    plex_media_server_max_open_files          => '1024',
-    plex_media_server_tmpdir => '/var/tmp',
-  }
+  #  class { 'plexmediaserver':
+  #    plex_user                => 'plex',
+  #    plex_media_server_home   => '/plex',
+  #    plex_media_server_application_support_dir => "/var/lib/plexmediaserver",
+  #    plex_media_server_max_plugin_procs        => '7',
+  #    plex_media_server_max_stack_size          => '20000',
+  #    plex_media_server_max_lock_mem            => '4000',
+  #    plex_media_server_max_open_files          => '1024',
+  #    plex_media_server_tmpdir => '/var/tmp',
+  #  }
 
-  file { '/plex': ensure => directory,   owner   => 'plex', group => 'plex'} ->
+
+  include plexmediaserver
+  file { '/plex':
+    ensure => directory,
+    owner  => 'plex',
+    group  => 'plex'
+  } ->
   class { 'samba::server':
     workgroup     => 'plex',
     server_string => "Movies",
