@@ -52,10 +52,6 @@ class profile::plex () {
     groups => 'plex',
   }
 
-  class { selinux:
-    mode => 'enforcing',
-    type => 'targeted',
-  }
 
   selinux::boolean { 'samba_export_all_ro': }
 
