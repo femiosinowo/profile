@@ -3,11 +3,9 @@ class profile::plex () {
   user { 'plex':
     ensure   => present,
     password => 'P@ssw0rd',
+    home     => '/home/plex',
   } ->
-  group { 'plex': ensure => present } ->
-  file { '/plex':
-    ensure => directory,
-  } ->
+  file { '/plex': ensure => directory, } ->
   class { 'samba::server':
     workgroup     => 'plex',
     server_string => "Movies",
