@@ -36,6 +36,13 @@ class profile::puppetmaster ($brokerHost = hiera('mcollective::brokerhost')) {
     ensure   => 'installed',
     provider => sensu_gem,
   }
+  
+  profile::plugchecksensu { 'puppet':
+    pluginname => 'sensu-plugins-selinux',
+    command    => 'check-selinux.rb'
+  }
+  
+  
 
   firewall { '120 allow puppet stuff':
     dport  => [80, 443, 61613, 61614, 8140, 8088],

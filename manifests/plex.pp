@@ -1,4 +1,5 @@
 class profile::plex () {
+  include plexmediaserver
   user { 'plex':
     ensure   => present,
     password => 'P@ssw0rd',
