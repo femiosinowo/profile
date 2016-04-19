@@ -22,7 +22,7 @@ class profile::plex () {
     workgroup     => 'plex',
     server_string => "Movies",
     interfaces    => "eth0 lo",
-    security      => 'share'
+    security      => 'user'
   }
 
   samba::server::share { 'PlexMovies':
