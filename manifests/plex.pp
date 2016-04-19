@@ -35,7 +35,7 @@ class profile::plex () {
     directory_mask => 0777,
     public         => yes,
     writable       => yes,
-    write_list           => '+plex'
+    write_list     => '+plex'
 
   #  #    force_group          => 'group',
   #  #    force_user           => 'user',
@@ -52,6 +52,15 @@ class profile::plex () {
     groups => 'plex',
   }
 
+  class { selinux:
+    mode => 'enforcing',
+    type => 'targeted',
+  }
+
+  selinux::boolean { 'samba_export_all_ro': }
+
+  selinux::boolean { 'samba_export_all_rw': }
+
   firewall { '120 allow puppet stuff':
     dport  => [139, 445, 3005, 8324, 32469, 32400],
     proto  => tcp,
@@ -63,4 +72,4 @@ class profile::plex () {
     proto  => udp,
     action => accept,
   }
-}
+}
