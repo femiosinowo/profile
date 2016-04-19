@@ -7,7 +7,7 @@ class profile::plex () {
     plex_media_server_max_stack_size          => '20000',
     plex_media_server_max_lock_mem            => '4000',
     plex_media_server_max_open_files          => '1024',
-    plex_media_server_tmpdir => '/tmp',
+    plex_media_server_tmpdir => '/var/tmp',
   }
 
   file { '/plex': ensure => directory, } ->
