@@ -26,18 +26,16 @@ class profile::plex () {
   }
 
   samba::server::share { 'PlexMovies':
-    comment              => 'PlexMovies',
-    path                 => '/home/plexthings',
+    comment        => 'PlexMovies',
+    path           => '/home/plexthings',
     # # guest_only           => true,
-    guest_ok             => true,
+    guest_ok       => true,
     # guest_account        => "guest",
-    browsable            => true,
-    create_mask          => 0777,
-    force_create_mask    => 0777,
-    directory_mask       => 0777,
-    force_directory_mask => 0777,
-    public               => yes,
-    writable             => yes,
+    browsable      => true,
+    directory_mask => 0777,
+    public         => yes,
+    writable       => yes,
+    write_list           => '+plex'
 
   #  #    force_group          => 'group',
   #  #    force_user           => 'user',
@@ -65,4 +63,4 @@ class profile::plex () {
     proto  => udp,
     action => accept,
   }
-}
+}
