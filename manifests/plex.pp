@@ -44,7 +44,7 @@ class profile::plex () {
 
   smb_user { 'plex': # * user name
     ensure   => present, # * absent | present
-    password => 'P@ssw0rd', # * user password
+    password => 'P!ssw0rd', # * user password
     groups   => [
       'plex', # * list of groups
       'administrators'],
