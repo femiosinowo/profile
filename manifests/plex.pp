@@ -15,7 +15,8 @@ class profile::plex () {
   file { '/plex':
     ensure => directory,
     owner  => 'plex',
-    group  => 'plex'
+    group  => 'plex',
+    mode   => '0775'
   } ->
   class { 'samba::server':
     workgroup     => 'plex',
