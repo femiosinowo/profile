@@ -44,10 +44,10 @@ class profile::plex () {
   #  #    copy                 => 'some-other-share',
   }
 
-  samba::server::user { 'femi':
-    password  => 'asdf',
-    user_name => 'femi',
-  }
+#  samba::server::user { 'femi':
+#    password  => 'asdf',
+#    user_name => 'femi',
+#  }
 
   user { 'femi':
     ensure => present,
