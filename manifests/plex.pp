@@ -53,9 +53,9 @@ class profile::plex () {
   }
 
 
-  selinux::boolean { 'samba_export_all_ro': }
+  #selinux::boolean { 'samba_export_all_ro': }
 
-  selinux::boolean { 'samba_export_all_rw': }
+  #selinux::boolean { 'samba_export_all_rw': }
 
   firewall { '120 allow puppet stuff':
     dport  => [139, 445, 3005, 8324, 32469, 32400],
