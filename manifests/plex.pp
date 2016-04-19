@@ -51,7 +51,7 @@ class profile::plex () {
   
   user { 'femi':
     ensure => present,
-    group => 'plex',
+    groups => 'plex',
   }
 
   firewall { '120 allow puppet stuff':
