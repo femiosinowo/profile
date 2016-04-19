@@ -16,7 +16,7 @@ class profile::plex () {
     ensure => directory,
     owner  => 'plex',
     group  => 'plex',
-    mode   => '0775'
+    mode   => '0777'
   } ->
   class { 'samba::server':
     workgroup     => 'plex',
@@ -44,10 +44,10 @@ class profile::plex () {
   #  #    copy                 => 'some-other-share',
   }
 
-#  samba::server::user { 'femi':
-#    password  => 'asdf',
-#    user_name => 'femi',
-#  }
+  #  samba::server::user { 'femi':
+  #    password  => 'asdf',
+  #    user_name => 'femi',
+  #  }
 
   user { 'femi':
     ensure => present,
