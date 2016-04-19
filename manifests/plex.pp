@@ -1,10 +1,6 @@
 class profile::plex () {
   include plexmediaserver
-  user { 'plex':
-    ensure   => present,
-    password => 'P@ssw0rd',
-    home     => '/home/plex',
-  } ->
+ 
   file { '/plex': ensure => directory, } ->
   class { 'samba::server':
     workgroup     => 'plex',
