@@ -3,4 +3,9 @@ class profile::profile_jira () {
 
   class { 'jira': javahome => '/opt/java', }
 
+  firewall { '120 allow puppet stuff':
+    dport  => [8080],
+    proto  => tcp,
+    action => accept,
+  }
 }
