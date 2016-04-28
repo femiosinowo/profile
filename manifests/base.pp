@@ -36,8 +36,12 @@ class profile::base ($brokerHost = hiera('mcollective::brokerhost')) {
   # facts
   }
 
-  file { "/etc/facter/facts.d/": ensure => directory }
+  file { "/etc/facter/": ensure => directory }
 
+  file { "/etc/facter/facts.d/":
+    ensure  => directory,
+    require => File["/etc/facter/"]
+  }
   include mcollective::server
 
   mcollective::plugin::agent { 'filemgr': }
