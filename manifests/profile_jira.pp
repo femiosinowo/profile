@@ -1,7 +1,7 @@
 class profile::profile_jira () {
   # include jdk_oracle
-  class { 'java': distribution => 'jdk', }
-
+  #class { 'java': distribution => 'jdk', }
+include java
   java::oracle { 'jdk8':
     ensure  => 'present',
     version => '8',
