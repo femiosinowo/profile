@@ -1,6 +1,9 @@
 class profile::profile_jira () {
   # include jdk_oracle
-  class { 'jdk_oracle': version => 8 }
+class { 'oracle_java':
+  version => '8u45',
+  type    => 'jdk'
+}
 
   class { 'postgresql::server': }
 
