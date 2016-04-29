@@ -15,6 +15,9 @@ class profile::profile_jira () {
     dbuser   => 'jiraadm',
   }
 
+  class { 'jira::facts':
+  }
+
   firewall { '120 allow puppet stuff':
     dport  => [8080],
     proto  => tcp,
