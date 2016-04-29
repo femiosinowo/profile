@@ -1,12 +1,13 @@
 class profile::profile_jira () {
-  include jdk_oracle
+  # include jdk_oracle
+  class { 'jdk_oracle': version => 8 }
 
-class { 'postgresql::server': }
+  class { 'postgresql::server': }
 
-postgresql::server::db { 'jira':
-  user     => 'jiraadm',
-  password => postgresql_password('jiraadm', 'mypassword'),
-}
+  postgresql::server::db { 'jira':
+    user     => 'jiraadm',
+    password => postgresql_password('jiraadm', 'mypassword'),
+  }
 
   class { 'jira':
     javahome => '/opt/java_home/',
