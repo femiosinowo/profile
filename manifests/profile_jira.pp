@@ -13,7 +13,7 @@ class { 'oracle_java':
   }
 
   class { 'jira':
-    javahome => '/usr/bin/',
+    javahome => '/usr',
     db       => 'postgresql',
     dbuser   => 'jiraadm',
   }
