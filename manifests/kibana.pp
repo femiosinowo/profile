@@ -6,7 +6,7 @@ class profile::kibana () {
     hour    => 0,
     minute  => 30,
   }
-  
+
   class { '::kibana4':
     package_ensure   => '4.3.0-linux-x64',
     package_provider => 'archive',
@@ -24,9 +24,9 @@ class profile::kibana () {
       'elasticsearch.url' => 'http://localhost:9200',
     }
   }
-  
-    firewall { '102 Allow ELKStacks':
-    dport  => [9200,5044,5601],
+
+  firewall { '102 Allow ELKStacks':
+    dport  => [9200, 5044, 5601],
     proto  => tcp,
     action => accept,
   }
