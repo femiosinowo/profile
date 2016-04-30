@@ -25,7 +25,7 @@ class profile::logstash ($elkstack_host = hiera('elk::host'),) {
 
   ::logstash::configfile { '/etc/logstash/conf.d/config.conf': content => template('profile/logstash/config.conf.erb'), }
 
-  firewall { '100 allow Jenkins on 8080':
+  firewall { '105 allow Jenkins on 8080':
     dport  => [80, 5601, 5044, 443, 9200],
     proto  => tcp,
     action => accept,
