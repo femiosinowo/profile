@@ -24,5 +24,11 @@ class profile::kibana () {
       'elasticsearch.url' => 'http://localhost:9200',
     }
   }
+  
+    firewall { '102 Allow ELKStacks':
+    dport  => [9200.5044,5601],
+    proto  => tcp,
+    action => accept,
+  }
 
 }
