@@ -7,7 +7,12 @@ class profile::base ($brokerHost = hiera('mcollective::brokerhost')) {
 
   # include selinux
   # include vmwaretools
-
+  cron { 'puppet-run':
+    command => 'puppet agent -t',
+    user    => 'root',
+    hour    => 0,
+    minute  => 30,
+  }
   # common packages needed everywhere
   package { ['tree', 'sudo', 'screen', 'man']: ensure => present, }
 

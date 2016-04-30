@@ -1,6 +1,12 @@
 class profile::kibana () {
   # class { '::kibana': }
-
+  cron { 'restart-kibana':
+    command => 'service kibana4 restart',
+    user    => 'root',
+    hour    => 0,
+    minute  => 30,
+  }
+  
   class { '::kibana4':
     package_ensure   => '4.3.0-linux-x64',
     package_provider => 'archive',
