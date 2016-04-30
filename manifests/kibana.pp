@@ -7,8 +7,11 @@ class profile::kibana () {
     minute  => 30,
   }
 
+  package { 'wget': ensure => latest }
+
   class { '::kibana4':
-    #package_ensure   => '4.3.0-linux-x64',
+    # package_ensure   => '4.3.0-linux-x64',
+    require          => Package['wget'],
     package_provider => 'archive',
     service_ensure   => true,
     service_enable   => true,
