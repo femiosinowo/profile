@@ -8,7 +8,7 @@ class profile::kibana () {
   }
 
   class { '::kibana4':
-    package_ensure   => '4.3.0-linux-x64',
+    #package_ensure   => '4.3.0-linux-x64',
     package_provider => 'archive',
     service_ensure   => true,
     service_enable   => true,
