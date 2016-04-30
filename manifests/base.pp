@@ -4,6 +4,7 @@ class profile::base ($brokerHost = hiera('mcollective::brokerhost')) {
   include stdlib
   include resolver
   include epel
+  include wget
 
   # include selinux
   # include vmwaretools
