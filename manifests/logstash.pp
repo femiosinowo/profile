@@ -5,7 +5,11 @@ class profile::logstash ($elkstack_host = hiera('elk::host'),) {
     alias   => 'cert_file',
     require => File['cert_dir'],
   }
-
+    file { '/etc/pki/tls/private/logstash-forwarder.key':
+    ensure  => file,
+    source  => "puppet:///modules/profiles/logstash/logstash-forwarder.key",
+    require => File['cert_dir'],
+  }
   file { '/etc/pki/tls/certs':
     ensure => directory,
     group  => root,
