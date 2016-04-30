@@ -26,7 +26,7 @@ class profile::kibana () {
   }
   
     firewall { '102 Allow ELKStacks':
-    dport  => [9200.5044,5601],
+    dport  => [9200,5044,5601],
     proto  => tcp,
     action => accept,
   }
