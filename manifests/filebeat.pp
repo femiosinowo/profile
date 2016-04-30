@@ -1,8 +1,8 @@
-class profile::filebeat () {
+class profile::filebeat ($elkstack_host = hiera('elk::host'),) {
   class { '::filebeat':
     outputs     => {
       'logstash' => {
-        'hosts'       => ['elk-stack:5044'],
+        'hosts'       => ["${elkstack_host}.5044"],
         'loadbalance' => true,
         # 'tls'
       }
@@ -11,7 +11,7 @@ class profile::filebeat () {
     ,
     prospectors => {
       'logstash' => {
-        'paths'    => ['/var/log/*.log', '/var/log/cron' , '/var/log/secure'],
+        'paths'    => ['/var/log/*.log', '/var/log/cron', '/var/log/secure'],
         'log_type' => 'syslog',
 
       }
@@ -20,11 +20,10 @@ class profile::filebeat () {
     ,
   }
 
-#  file { '/etc/pki/tls/certs/logstash-forwarder.crt':
-#    ensure => file,
-#    source => "puppet:///modules/profile/logstash/logstash-forwarder.crt",
-#  }
-
+  #  file { '/etc/pki/tls/certs/logstash-forwarder.crt':
+  #    ensure => file,
+  #    source => "puppet:///modules/profile/logstash/logstash-forwarder.crt",
+  #  }
 }
 
 #

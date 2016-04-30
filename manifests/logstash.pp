@@ -1,4 +1,4 @@
-class profile::logstash () {
+class profile::logstash ($elkstack_host = hiera('elk::host'),) {
   file { '/etc/pki/tls/certs/logstash-forwarder.crt':
     ensure  => file,
     source  => "puppet:///modules/profile/logstash/logstash-forwarder.crt",
@@ -32,7 +32,7 @@ class profile::logstash () {
   }
 
   include profile::nginx
-  nginx::resource::vhost { 'elkstack.paosin.local': proxy => 'http://localhost:5601', }
+  nginx::resource::vhost { "${elkstack_host}": proxy => 'http://localhost:5601', }
   #  exec { 'create_certs':
   #    require => File['cert_dir'],
   #    path    => "/usr/bin:/usr/sbin:/bin",
