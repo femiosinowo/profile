@@ -29,6 +29,11 @@ class profile::dns_server () {
       data => ['10.0.0.20'],
       ptr  => $ptr;
 
+    'elkstack':
+      zone => 'paosin.local',
+      data => ['10.0.0.19'],
+      ptr  => true;
+
     'sensu':
       zone => 'paosin.local',
       data => ['10.0.0.57'],
@@ -36,7 +41,7 @@ class profile::dns_server () {
 
     'puppet1':
       zone => 'paosin.local',
-      data => ['10.0.0.48'],
+      data => ['10.0.0.61'],
       ptr  => true; # Creates a matching reverse zone record.  Make sure you've added the proper reverse zone in the manifest.
   }
 
