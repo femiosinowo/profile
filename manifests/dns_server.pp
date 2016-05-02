@@ -39,6 +39,11 @@ class profile::dns_server () {
       data => ['10.0.0.57'],
       ptr  => true;
 
+    'plex':
+      zone => 'paosin.local',
+      data => ['10.0.0.48'],
+      ptr  => true;
+
     'puppet1':
       zone => 'paosin.local',
       data => ['10.0.0.61'],
