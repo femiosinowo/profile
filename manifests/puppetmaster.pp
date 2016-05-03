@@ -30,14 +30,20 @@ class profile::puppetmaster ($brokerHost = hiera('mcollective::brokerhost')) {
 
   # Configure Apache on this server
   class { 'apache':
-  } ->
-  class { 'apache::mod::wsgi': wsgi_socket_prefix => "/var/run/wsgi", } ->
+  }
+
+  class { 'apache::mod::wsgi':
+    wsgi_socket_prefix => "/var/run/wsgi",
+  }
+
   # Configure Puppetboard
-  class { 'puppetboard': manage_git => 'latest', } ->
-  # Access Puppetboard through pboard.example.com
+  class { 'puppetboard':
+  }
+
+  # Access Puppetboard through pboard.example.com, port 8888
   class { 'puppetboard::apache::vhost':
-    vhost_name => 'puppetdb.paosin.local',
-    port       => 80,
+    vhost_name => 'puppetboard.paosin.local',
+    port       => '8888',
   }
 
   include mcollective::client
