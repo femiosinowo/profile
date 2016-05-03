@@ -24,9 +24,9 @@ class profile::dns_server () {
       data => ['10.0.0.10'],
       ptr  => $ptr;
 
-    'cobbler':
+    'vcenter':
       zone => 'paosin.local',
-      data => ['10.0.0.20'],
+      data => ['10.0.0.15'],
       ptr  => $ptr;
 
     'elkstack':
@@ -34,14 +34,19 @@ class profile::dns_server () {
       data => ['10.0.0.19'],
       ptr  => true;
 
-    'jenkins-master1':
+    'cobbler':
       zone => 'paosin.local',
-      data => ['10.0.0.66'],
+      data => ['10.0.0.20'],
+      ptr  => $ptr;
+
+    'plex':
+      zone => 'paosin.local',
+      data => ['10.0.0.48'],
       ptr  => true;
 
-    'activemq':
+    'jira':
       zone => 'paosin.local',
-      data => ['10.0.0.65'],
+      data => ['10.0.0.53'],
       ptr  => true;
 
     'sensu':
@@ -49,9 +54,14 @@ class profile::dns_server () {
       data => ['10.0.0.57'],
       ptr  => true;
 
-    'plex':
+    'activemq':
       zone => 'paosin.local',
-      data => ['10.0.0.48'],
+      data => ['10.0.0.65'],
+      ptr  => true;
+
+    'jenkins-master1':
+      zone => 'paosin.local',
+      data => ['10.0.0.66'],
       ptr  => true;
 
     'puppet1':
