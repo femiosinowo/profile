@@ -7,19 +7,19 @@ class profile::dns_server () {
 
   # Forward Zone
   dns::zone { 'paosin.local':
-    soa         => 'ns1.paosin.local',
-    nameservers => ['ns1']
+    soa         => 'dns1.paosin.local',
+    nameservers => ['dns1']
   }
 
   # Reverse Zone
   dns::zone { '0.0.10.IN-ADDR.ARPA':
-    soa         => 'ns1.paosin.local',
-    nameservers => ['ns1']
+    soa         => 'dns1.paosin.local',
+    nameservers => ['dns1']
   }
 
   # A Records:
   dns::record::a {
-    'ns1':
+    'dns1':
       zone => 'paosin.local',
       data => ['10.0.0.10'],
       ptr  => $ptr;
