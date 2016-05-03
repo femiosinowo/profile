@@ -71,7 +71,7 @@ class profile::dns_server () {
     # Creates a matching reverse zone record.  Make sure you've added the proper reverse zone in the manifest.
   }
 
-  firewall { '120 allow DNS stuff':
+  firewall { '121 allow DNS stuff':
     dport  => [53],
     proto  => udp,
     action => accept,
