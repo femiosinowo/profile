@@ -34,6 +34,11 @@ class profile::dns_server () {
       data => ['10.0.0.19'],
       ptr  => true;
 
+    'activemq':
+      zone => 'paosin.local',
+      data => ['10.0.0.65'],
+      ptr  => true;
+
     'sensu':
       zone => 'paosin.local',
       data => ['10.0.0.57'],
