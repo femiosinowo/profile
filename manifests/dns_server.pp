@@ -67,7 +67,13 @@ class profile::dns_server () {
     'puppet1':
       zone => 'paosin.local',
       data => ['10.0.0.61'],
-      ptr  => true; # Creates a matching reverse zone record.  Make sure you've added the proper reverse zone in the manifest.
+      ptr  => true;
+    # Creates a matching reverse zone record.  Make sure you've added the proper reverse zone in the manifest.
   }
 
+  firewall { '120 allow DNS stuff':
+    dport  => [53],
+    proto  => udp,
+    action => accept,
+  }
 }
