@@ -44,6 +44,10 @@ class profile::puppetmaster ($brokerHost = hiera('mcollective::brokerhost')) {
   class { 'puppetboard::apache::vhost':
     vhost_name => 'puppetboard.paosin.local',
     port       => '8888',
+  }->
+    file { '/etc/httpd/conf.d/puppetmaster.conf':
+    ensure => file,
+    source => "puppet:///modules/profile/puppet/puppetmaster.conf",
   }
 
   include mcollective::client
