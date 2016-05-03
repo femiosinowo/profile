@@ -3,7 +3,7 @@ class profile::dns_server () {
   include dns::server
 
   # Forwarders
-  dns::server::options { '/etc/bind/named.conf.options': forwarders => ['8.8.8.8', '8.8.4.4'] }
+  #dns::server::options { '/etc/bind/named.conf.options': forwarders => ['8.8.8.8', '8.8.4.4'] }
 
   # Forward Zone
   dns::zone { 'paosin.local':
@@ -33,7 +33,10 @@ class profile::dns_server () {
       zone => 'paosin.local',
       data => ['10.0.0.19'],
       ptr  => true;
-
+    'jenkins-master1.':
+      zone => 'paosin.local',
+      data => ['10.0.0.66'],
+      ptr  => true;
     'activemq':
       zone => 'paosin.local',
       data => ['10.0.0.65'],
