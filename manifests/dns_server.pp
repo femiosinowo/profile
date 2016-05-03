@@ -3,7 +3,7 @@ class profile::dns_server () {
   include dns::server
 
   # Forwarders
-  #dns::server::options { '/etc/bind/named.conf.options': forwarders => ['8.8.8.8', '8.8.4.4'] }
+  dns::server::options { '/etc/named/named.conf.options': forwarders => ['8.8.8.8', '8.8.4.4'] }
 
   # Forward Zone
   dns::zone { 'paosin.local':
