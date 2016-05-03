@@ -35,7 +35,6 @@ class profile::puppetmaster ($brokerHost = hiera('mcollective::brokerhost')) {
   # Configure Puppetboard
   class { 'puppetboard':
     manage_git        => 'latest',
-    manage_virtualenv => 'latest',
   } ->
   # Access Puppetboard through pboard.example.com
   class { 'puppetboard::apache::vhost':
