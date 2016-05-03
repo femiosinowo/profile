@@ -28,6 +28,7 @@ class profile::puppetmaster ($brokerHost = hiera('mcollective::brokerhost')) {
     source => "puppet:///modules/profile/puppet/autosign.conf",
   }
 
+  # Configure Puppetboard
   class { 'puppetboard':
     manage_git        => 'latest',
     manage_virtualenv => 'latest',
@@ -38,10 +39,6 @@ class profile::puppetmaster ($brokerHost = hiera('mcollective::brokerhost')) {
   }
 
   class { 'apache::mod::wsgi':
-  }
-
-  # Configure Puppetboard
-  class { 'puppetboard':
   }
 
   # Access Puppetboard through pboard.example.com
