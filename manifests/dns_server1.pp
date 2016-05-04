@@ -31,6 +31,7 @@ class profile::dns_server1 () {
     ensure    => 'present',
     zone      => 'paosin.local',
     ptr       => true,
+    zone_arpa => '0.0.10.IN-ADDR.ARPA',
     hash_data => {
       'dns1'  =>        { owner   => '10.0.0.10',} ,
       'dns2'  =>        { owner   => '10.0.0.11',} ,
