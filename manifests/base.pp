@@ -8,12 +8,17 @@ class profile::base ($brokerHost = hiera('mcollective::brokerhost')) {
 
   # include selinux
   # include vmwaretools
-  cron { 'puppet-run':
-    command => 'puppet agent -t',
-    user    => 'root',
-    hour    => 0,
-    minute  => 30,
+  file { "/etc/cron.d/puppet":
+    ensure  => file,
+    owner   => root,
+    group   => root,
+    mode    => 0644,
+    content => inline_template("15 * * * * root /usr/bin/puppet agent --onetime --no-daemonize --no-splay\n"
+    ),
+  # content => inline_template("<%= scope.function_fqdn_rand([60]) %> * * * * root /usr/bin/puppet agent --onetime --no-daemonize
+  # --no-splay\n"),
   }
+
   # common packages needed everywhere
   package { ['tree', 'sudo', 'screen', 'man']: ensure => present, }
 
@@ -42,16 +47,16 @@ class profile::base ($brokerHost = hiera('mcollective::brokerhost')) {
   # facts
   }
 
-#  file { 'fact_path':
-#    path   => "/etc/facter/",
-#    ensure => directory
-#  }
-#
-#  file { 'facter_path':
-#    path    => "/etc/facter/facts.d/",
-#    ensure  => directory,
-#    require => File["fact_path"]
-#  }
+  #  file { 'fact_path':
+  #    path   => "/etc/facter/",
+  #    ensure => directory
+  #  }
+  #
+  #  file { 'facter_path':
+  #    path    => "/etc/facter/facts.d/",
+  #    ensure  => directory,
+  #    require => File["fact_path"]
+  #  }
   include mcollective::server
 
   mcollective::plugin::agent { 'filemgr': }
