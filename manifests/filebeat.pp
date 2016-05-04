@@ -11,7 +11,7 @@ class profile::filebeat ($elkstack_host = hiera('elk::host'),) {
     ,
     prospectors => {
       'logstash' => {
-        'paths'    => ['/var/log/*.log', '/var/log/cron', '/var/log/secure'],
+        'paths'    => ['/var/log/*.log', '/var/log/cron', '/var/log/secure', '/var/log/messages'],
         'log_type' => 'syslog',
 
       }

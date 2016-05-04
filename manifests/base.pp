@@ -47,18 +47,9 @@ class profile::base ($brokerHost = hiera('mcollective::brokerhost')) {
   # facts
   }
 
-  #  file { 'fact_path':
-  #    path   => "/etc/facter/",
-  #    ensure => directory
-  #  }
-  #
-  #  file { 'facter_path':
-  #    path    => "/etc/facter/facts.d/",
-  #    ensure  => directory,
-  #    require => File["fact_path"]
-  #  }
-  include mcollective::server
-
+ 
+  #include mcollective::server
+  include profiles::filebeat
   mcollective::plugin::agent { 'filemgr': }
 
   mcollective::plugin::agent { 'nettest': }
