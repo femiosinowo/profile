@@ -1,5 +1,13 @@
-class profile::dns_server1 () {
+class profile::dns_server1 (
   
+  #$bind::params::default_config
+   $default_config       = {
+        
+          'pid-file'               => '"/var/run/named/named.pid"',
+          'session-keyfile'        => '"/var/run/named/session.key"',
+          
+        }
+        ) {
   include bind
     
     firewall { '120 allow DNS stuff':
