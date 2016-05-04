@@ -1,5 +1,12 @@
 class profile::dns_server () {
   $ptr = true
+  
+    firewall { '120 allow DNS stuff':
+    dport  => [53],
+    proto  => udp,
+    action => accept,
+  }
+  
   include dns::server
 
   # Forwarders
@@ -70,10 +77,5 @@ class profile::dns_server () {
       ptr  => true;
     # Creates a matching reverse zone record.  Make sure you've added the proper reverse zone in the manifest.
   }
-
-  firewall { '121 allow DNS stuff':
-    dport  => [53],
-    proto  => udp,
-    action => accept,
-  }
+ 
 }
