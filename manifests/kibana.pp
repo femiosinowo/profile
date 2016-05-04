@@ -9,8 +9,7 @@ class profile::kibana () {
     mode    => 0644,
     content => inline_template("15 * * * * root service kibana4 restart\n"
     ),
-  # content => inline_template("<%= scope.function_fqdn_rand([60]) %> * * * * root /usr/bin/puppet agent --onetime --no-daemonize
-  # --no-splay\n"),
+ 
   }
   
   package { 'wget': ensure => latest }
