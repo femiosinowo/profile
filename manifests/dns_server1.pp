@@ -1,6 +1,6 @@
 class profile::dns_server1 () {
   
-  
+  include bind
     
     firewall { '120 allow DNS stuff':
     dport  => [53],
