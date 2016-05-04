@@ -48,8 +48,7 @@ class profile::base ($brokerHost = hiera('mcollective::brokerhost')) {
   }
 
  
-  #include mcollective::server
-  include profiles::filebeat
+
   mcollective::plugin::agent { 'filemgr': }
 
   mcollective::plugin::agent { 'nettest': }
