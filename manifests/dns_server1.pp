@@ -12,7 +12,7 @@ class profile::dns_server1 () {
   bind::zone { 'paosin.local':
     ensure       => 'present',
         zone_contact      =>'admin@paosin.local',
-    zone_ns      => ['ns1.paosin.local'],
+    zone_ns      => ['dns2.paosin.local'],
     zone_serial  => '2012112901',
     zone_ttl     => '604800',
     zone_origin  => 'paosin.local',
@@ -21,7 +21,7 @@ class profile::dns_server1 () {
     bind::zone { '0.0.10.IN-ADDR.ARPA':
     ensure       => 'present',
     zone_contact      =>'admin@paosin.local',
-    zone_ns      => ['ns1.paosin.local'],
+    zone_ns      => ['dns2.paosin.local'],
     zone_serial  => '2012112901',
     zone_ttl     => '604800',
     zone_origin  => 'paosin.local',
