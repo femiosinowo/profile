@@ -7,6 +7,7 @@ define profile::plugchecksensu (
   package { $pluginname:
     ensure   => $installed,
     provider => sensu_gem,
+    require => Class["sensu"],
   }
 
   sensu::check { $pluginname:

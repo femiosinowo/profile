@@ -46,7 +46,10 @@ class profile::dns_server1 (
       'vcenter'         => {
         owner             => '10.0.0.15',
       }
-  
+        ,
+      'elkstack'         => {
+        owner             => '10.0.0.19',
+      }
       ,
       'cobbler'         => {
         owner             => '10.0.0.20',
