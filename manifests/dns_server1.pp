@@ -1,10 +1,6 @@
 class profile::dns_server1 (
   # $bind::params::default_config
-  $bind::params::default_config = {
-    'pid-file'        => '"/var/run/named/named.pid"',
-    'session-keyfile' => '"/var/run/named/session.key"',
-
-  }
+   
 ) {
   include bind
 
@@ -31,8 +27,10 @@ class profile::dns_server1 (
     zone_ttl     => '604800',
     zone_origin  => '0.0.10.IN-ADDR.ARPA',
   }
+  
+ 
 
-  bind::a { 'paosin.local':
+  bind::a { 'ns paosin.local':
     ensure    => 'present',
     zone      => 'paosin.local',
     ptr       => true,
