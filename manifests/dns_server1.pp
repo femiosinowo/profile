@@ -30,8 +30,8 @@ class profile::dns_server1 (
   
  bind::a {'elkstack.paosin.local':
      zone  => 'paosin.local',
-     owner => 'elkstack',
-     host  => '10.0.0.19',
+ 
+     owner  => '10.0.0.19',
          ptr       => true,
     zone_arpa => '0.0.10.IN-ADDR.ARPA',
    }
