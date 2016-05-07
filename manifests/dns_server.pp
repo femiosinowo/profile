@@ -12,21 +12,21 @@ class profile::dns_server () {
   # Forwarders
   dns::server::options { '/etc/named/named.conf.options':
     forwarders => ['8.8.8.8', '8.8.4.4'],
-    require    => Class['bind'],
+    #require    => Class['bind'],
   }
 
   # Forward Zone
   dns::zone { 'paosin.local':
     soa         => 'dns1.paosin.local',
     nameservers => ['dns1'],
-    require     => Class['bind'],
+  #  require     => Class['bind'],
   }
 
   # Reverse Zone
   dns::zone { '0.0.10.IN-ADDR.ARPA':
     soa         => 'dns1.paosin.local',
     nameservers => ['dns1'],
-    require     => Class['bind'],
+    #require     => Class['bind'],
   }
 
   # A Records:
