@@ -34,7 +34,9 @@ class profile::puppetmaster ($brokerHost = hiera('mcollective::brokerhost')) {
 
   class { 'apache::mod::ssl':
   }
-
+   class { 'apache::mod::passenger':
+  }
+ 
   class { 'apache::mod::wsgi':
     wsgi_socket_prefix => "/var/run/wsgi",
   }
