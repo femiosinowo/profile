@@ -23,7 +23,7 @@ class profile::dns_server () {
   dns::zone { '0.0.10.IN-ADDR.ARPA':
     soa         => 'dns1.paosin.local',
     nameservers => ['dns1'],
-    require => Class['dns'],
+    require => Class['bind'],
   }
 
   # A Records:
