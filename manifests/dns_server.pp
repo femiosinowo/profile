@@ -15,13 +15,15 @@ class profile::dns_server () {
   # Forward Zone
   dns::zone { 'paosin.local':
     soa         => 'dns1.paosin.local',
-    nameservers => ['dns1']
+    nameservers => ['dns1'],
+    require => Class['dns'],
   }
 
   # Reverse Zone
   dns::zone { '0.0.10.IN-ADDR.ARPA':
     soa         => 'dns1.paosin.local',
-    nameservers => ['dns1']
+    nameservers => ['dns1'],
+    require => Class['dns'],
   }
 
   # A Records:
