@@ -1,29 +1,32 @@
 class profile::dns_server () {
   $ptr = true
-  
-    firewall { '120 allow DNS stuff':
+
+  firewall { '120 allow DNS stuff':
     dport  => [53],
     proto  => udp,
     action => accept,
   }
-  
+
   include dns::server
 
   # Forwarders
-  dns::server::options { '/etc/named/named.conf.options': forwarders => ['8.8.8.8', '8.8.4.4'] }
+  dns::server::options { '/etc/named/named.conf.options':
+    forwarders => ['8.8.8.8', '8.8.4.4'],
+    require    => Class['bind'],
+  }
 
   # Forward Zone
   dns::zone { 'paosin.local':
     soa         => 'dns1.paosin.local',
     nameservers => ['dns1'],
-    require => Class['dns'],
+    require     => Class['bind'],
   }
 
   # Reverse Zone
   dns::zone { '0.0.10.IN-ADDR.ARPA':
     soa         => 'dns1.paosin.local',
     nameservers => ['dns1'],
-    require => Class['bind'],
+    require     => Class['bind'],
   }
 
   # A Records:
@@ -79,5 +82,5 @@ class profile::dns_server () {
       ptr  => true;
     # Creates a matching reverse zone record.  Make sure you've added the proper reverse zone in the manifest.
   }
- 
+
 }
