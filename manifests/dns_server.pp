@@ -80,7 +80,7 @@ class profile::dns_server () {
       data => ['10.0.0.61'],
       ptr  => true;
 
-    'puppet2':
+    'puppet':
       zone => 'paosin.local',
       data => ['10.0.0.72'],
       ptr  => true;
