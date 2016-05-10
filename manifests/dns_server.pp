@@ -10,10 +10,9 @@ class profile::dns_server () {
   include dns::server
 
   # Forwarders
-  dns::server::options { '/etc/named/named.conf.options':
-    forwarders => ['8.8.8.8', '8.8.4.4'],
-    #require    => Class['bind'],
-  }
+  dns::server::options { '/etc/named/named.conf.options': forwarders => ['8.8.8.8', '8.8.4.4'],
+  # require    => Class['bind'],
+   }
 
   # Forward Zone
   dns::zone { 'paosin.local':
@@ -26,7 +25,7 @@ class profile::dns_server () {
   dns::zone { '0.0.10.IN-ADDR.ARPA':
     soa         => 'dns1.paosin.local',
     nameservers => ['dns1'],
-    #require     => Class['bind'],
+  # require     => Class['bind'],
   }
 
   # A Records:
@@ -79,6 +78,11 @@ class profile::dns_server () {
     'puppet1':
       zone => 'paosin.local',
       data => ['10.0.0.61'],
+      ptr  => true;
+
+    'puppet2':
+      zone => 'paosin.local',
+      data => ['10.0.0.72'],
       ptr  => true;
     # Creates a matching reverse zone record.  Make sure you've added the proper reverse zone in the manifest.
   }
