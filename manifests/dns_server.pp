@@ -84,6 +84,11 @@ class profile::dns_server () {
       zone => 'paosin.local',
       data => ['10.0.0.72'],
       ptr  => true;
+
+    'x11':
+      zone => 'paosin.local',
+      data => ['10.0.0.55'],
+      ptr  => true;
     # Creates a matching reverse zone record.  Make sure you've added the proper reverse zone in the manifest.
   }
 
